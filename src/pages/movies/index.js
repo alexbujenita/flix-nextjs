@@ -1,5 +1,5 @@
 import axios from "axios";
-import MovieCard from "../components/NavBar/MovieCard/MovieCard";
+import MovieCard from "../../components/MovieCard/MovieCard";
 import Link from "next/link";
 import Head from "next/head";
 import styles from "./Movies.module.scss";
@@ -12,6 +12,8 @@ export default function Movies({ page, results }) {
     <>
       <Head>
         <title>Movies | Page {page}</title>
+        <meta name="description" content="Movies sorted by popularity." />
+        <html lang="en" />
       </Head>
       <div className={styles.moviesContainer}>
         {results.map((movie) => {
@@ -20,10 +22,14 @@ export default function Movies({ page, results }) {
       </div>
       <div className={styles.moviesNavigation}>
         <Link href={`/movies?page=${prevPage}`}>
-          <a><h1>PREV</h1></a>
+          <a>
+            <h1>PREV</h1>
+          </a>
         </Link>
         <Link href={`/movies?page=${nextPage}`}>
-          <a><h1>NEXT</h1></a>
+          <a>
+            <h1>NEXT</h1>
+          </a>
         </Link>
       </div>
     </>
