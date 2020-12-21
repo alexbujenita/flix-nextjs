@@ -1,0 +1,17 @@
+.movieCard {
+  text-align: center;
+  padding: 0 5px;
+}
+
+.movieTitle {
+  max-width: 300px;
+}
+
+.movieCardImage {
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.movieCardImage div {
+  display: block !important;
+}
