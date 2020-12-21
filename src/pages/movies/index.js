@@ -1,15 +1,30 @@
 import axios from "axios";
 import MovieCard from "../components/NavBar/MovieCard/MovieCard";
-import styles from './Movies.module.scss'
-export default function Movies(props) {
+import Link from "next/link";
+import Head from "next/head";
+import styles from "./Movies.module.scss";
+
+export default function Movies({ page, results }) {
   // console.log(props);
+  const nextPage = page >= 500 ? 500 : page + 1;
+  const prevPage = page <= 1 ? 1 : page - 1;
   return (
     <>
-      <h1>MOVIES!</h1>
+      <Head>
+        <title>Movies | Page {page}</title>
+      </Head>
       <div className={styles.moviesContainer}>
-        {props.results.map((movie) => {
+        {results.map((movie) => {
           return <MovieCard key={movie.id} {...movie} />;
         })}
+      </div>
+      <div className={styles.moviesNavigation}>
+        <Link href={`/movies?page=${prevPage}`}>
+          <a><h1>PREV</h1></a>
+        </Link>
+        <Link href={`/movies?page=${nextPage}`}>
+          <a><h1>NEXT</h1></a>
+        </Link>
       </div>
     </>
   );
@@ -21,7 +36,9 @@ export async function getServerSideProps(ctx) {
   } = ctx;
   try {
     const { data } = await axios.get(
-      `http://localhost:3001/api/movies?page=${page}`
+      `http://localhost:3001/api/movies?page=${
+        page < 1 || page > 500 ? 1 : page
+      }`
     );
     return {
       props: data,

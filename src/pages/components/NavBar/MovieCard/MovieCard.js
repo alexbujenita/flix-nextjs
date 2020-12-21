@@ -1,7 +1,6 @@
 import Image from "next/image";
 import styles from "./MovieCard.module.scss";
 export default function MovieCard(props) {
-  console.log(props);
   const { title, poster_path } = props;
   return (
     <div className={styles.movieCard}>

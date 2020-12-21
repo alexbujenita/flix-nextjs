@@ -1,5 +1,13 @@
+@import 'src/themes/_typography.scss';
+
 .moviesContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.moviesNavigation {
+  color: $primary-colour-2;
+  display: flex;
+  justify-content: space-around;
 }
