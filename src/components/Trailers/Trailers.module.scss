@@ -1,0 +1,27 @@
+@import "src/themes/_typography.scss";
+
+.trailersContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.showHideTrailers {
+  text-align: center;
+  cursor: pointer;
+  color: $primary-colour-2;
+  animation: text-focus-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}

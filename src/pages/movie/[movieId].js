@@ -2,6 +2,7 @@ import axios from "axios";
 import Head from "next/head";
 import { useState } from "react";
 import PersonCard from "../../components/PersonCard/PersonCard";
+import Trailers from "../../components/Trailers/Trailers";
 import styles from "./Movie.module.scss";
 
 export default function Movie(props) {
@@ -33,6 +34,7 @@ export default function Movie(props) {
           {movie.overview ? <h3>{movie.overview}</h3> : null}
         </div>
       </div>
+      {trailers?.results?.length ? <Trailers trailers={trailers.results} /> : null}
       {credits?.cast?.length && !displayCast && (
         <h2
           className={styles.showHideCast}
