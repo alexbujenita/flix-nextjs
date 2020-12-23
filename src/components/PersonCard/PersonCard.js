@@ -5,7 +5,7 @@ export default function PersonCard(props) {
   console.log(props);
   return (
     <div className={styles.personContainer}>
-      <div>
+      <div className={styles.personImageContainer}>
         <Image
           src={
             props.profile_path

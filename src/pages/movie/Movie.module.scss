@@ -19,6 +19,7 @@
 
 .showHideCast {
   text-align: center;
+  cursor: pointer;
   color: $primary-colour-2;
   animation: text-focus-in 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
