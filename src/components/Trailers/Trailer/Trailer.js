@@ -1,7 +1,6 @@
 import styles from "./Trailer.module.scss";
 
 export default function Trailer({ trailer }) {
-  console.log(trailer);
   return (
     <div className={styles.youtubeVideo}>
       <iframe

@@ -1,5 +1,28 @@
+.infoContainer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+  align-items: center;
+  text-align: center;
+}
+
+.imageContainer {
+  margin: 0 60px;
+  border-radius: 5%;
+  box-shadow: 3px 0 5px 4px #ccc;
+}
+
+.imageContainer div {
+  display: block !important;
+}
+
 .actorMovieContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.actorInfo {
+  max-width: 70%;
+  line-height: 25px;
 }

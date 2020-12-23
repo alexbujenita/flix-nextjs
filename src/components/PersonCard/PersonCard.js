@@ -3,7 +3,6 @@ import Link from "next/link";
 import styles from "./PersonCard.module.scss";
 
 export default function PersonCard(props) {
-  console.log(props);
   return (
     <div className={styles.personContainer}>
       <Link href={`/actor/${props.id}`}>

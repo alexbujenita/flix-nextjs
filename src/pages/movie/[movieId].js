@@ -6,7 +6,6 @@ import Trailers from "../../components/Trailers/Trailers";
 import styles from "./Movie.module.scss";
 
 export default function Movie(props) {
-  console.log(props);
   const { credits, movie, trailers } = props;
 
   const [displayCast, setDisplayCast] = useState(false);
@@ -21,7 +20,6 @@ export default function Movie(props) {
             movie.title || movie.original_title
           }`}
         />
-        <html lang="en" />
       </Head>
       <div className={styles.movieIntroContainer}>
         <div className={styles.movieIntro}>

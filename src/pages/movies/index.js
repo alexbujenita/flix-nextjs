@@ -5,7 +5,6 @@ import Head from "next/head";
 import styles from "./Movies.module.scss";
 
 export default function Movies({ page, results }) {
-  // console.log(props);
   const nextPage = page >= 500 ? 500 : page + 1;
   const prevPage = page <= 1 ? 1 : page - 1;
   return (
@@ -13,7 +12,6 @@ export default function Movies({ page, results }) {
       <Head>
         <title>Movies | Page {page}</title>
         <meta name="description" content="Movies sorted by popularity." />
-        <html lang="en" />
       </Head>
       <div className={styles.moviesContainer}>
         {results.map((movie) => {
