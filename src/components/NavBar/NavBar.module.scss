@@ -4,5 +4,7 @@
   height: 70px;
   background-color: antiquewhite;
   z-index: 100;
+  display: flex;
+  justify-content: space-evenly;
   position: sticky;
 }
