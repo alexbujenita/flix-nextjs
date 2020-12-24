@@ -38,11 +38,14 @@ export async function getServerSideProps(ctx) {
   const {
     query: { page = 1 },
   } = ctx;
+  console.log(ctx.req.headers.cookie);
   try {
     const { data } = await axios.get(
       `http://localhost:3001/api/movies?page=${
         page < 1 || page > 500 ? 1 : page
-      }`
+      }`,
+      { headers: { Authorization: "Bearer asd" } },
+      { withCredentials: true }
     );
     return {
       props: data,
