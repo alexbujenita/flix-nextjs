@@ -11,7 +11,7 @@ export default function SearchBar() {
 
   const searchResults = (e) => {
     if (e.key === "Enter" && !!search) {
-      router.push(`/search?searchTerm=${search}&includeAdult=${adult}`)
+      router.push(`/search?searchTerm=${search}&includeAdult=${adult}&page=1`)
     }
   }
 
