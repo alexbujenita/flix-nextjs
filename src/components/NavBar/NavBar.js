@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SearchBar from "../SearchBar/SearchBar";
 import styles from "./NavBar.module.scss";
 
 export default function NavBar() {
@@ -9,6 +10,7 @@ export default function NavBar() {
           <h3>Movies</h3>
         </a>
       </Link>
+      <SearchBar />
     </div>
   );
 }

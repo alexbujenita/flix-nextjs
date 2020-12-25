@@ -38,13 +38,13 @@ export async function getServerSideProps(ctx) {
   const {
     query: { page = 1 },
   } = ctx;
-  console.log(ctx.req.headers.cookie);
+  console.log(ctx.req.headers);
   try {
     const { data } = await axios.get(
       `http://localhost:3001/api/movies?page=${
         page < 1 || page > 500 ? 1 : page
       }`,
-      { headers: { Authorization: "Bearer asd" } },
+      { headers: { Authorization: `Bearer ${ctx.req.headers.cookie}`, cookie:  ctx.req.headers.cookie} },
       { withCredentials: true }
     );
     return {
