@@ -50,8 +50,7 @@ export async function getServerSideProps(ctx) {
     return {
       props: data,
     };
-  } catch (error) {
-    console.log(error)
+  } catch {
     return {
       notFound: true,
     };

@@ -25,7 +25,7 @@ export async function getServerSideProps(ctx) {
   }
   try {
     const { data } = await axios.get(
-      `http://localhost:3001/api/favs/user-favs`,
+      'http://localhost:3001/api/favs/user-favs',
       {
         headers: {
           Authorization: `Bearer ${ctx.req.headers.cookie}`,

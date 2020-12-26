@@ -17,14 +17,28 @@ export default function Login() {
   const formSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data: { firstName } } = await axios.post(
+      const {
+        data: { firstName },
+      } = await axios.post(
         "http://localhost:3001/api/auth/login",
         { email, password },
         { withCredentials: true }
       );
       localStorage.setItem("LOGGED", firstName);
+      const {
+        data: { UserFavourites },
+      } = await axios.get("http://localhost:3001/api/favs/user-favs", {
+        withCredentials: true,
+      });
+      if (UserFavourites.length) {
+        const movieIds = UserFavourites.map((fav) => fav.movieRefId);
+        localStorage.setItem("UserFavs", JSON.stringify(movieIds));
+      } else {
+        localStorage.setItem("UserFavs", JSON.stringify([]));
+      }
       router.push("/movies");
-    } catch {
+    } catch (e){
+      console.log(e)
       localStorage.removeItem("LOGGED");
       alert("SOMETHIGN WRONG");
     }

@@ -7,6 +7,7 @@ export default function LogInOut({ name }) {
   const router = useRouter();
   function clearLocalStorage() {
     localStorage.clear("LOGGED");
+    localStorage.clear("UserFavs");
     router.push("/movies");
   }
 

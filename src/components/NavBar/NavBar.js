@@ -17,6 +17,13 @@ export default function NavBar() {
           <h3>Movies</h3>
         </a>
       </Link>
+      {logged && (
+        <Link href="/user-favs">
+          <a>
+            <h3>FAVS</h3>
+          </a>
+        </Link>
+      )}
       <SearchBar />
       <LogInOut name={logged} />
     </div>
