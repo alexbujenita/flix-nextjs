@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LogInOut from "../LogInOut/LogInOut";
 import SearchBar from "../SearchBar/SearchBar";
 import styles from "./NavBar.module.scss";
 
@@ -11,6 +12,7 @@ export default function NavBar() {
         </a>
       </Link>
       <SearchBar />
+      <LogInOut />
     </div>
   );
 }

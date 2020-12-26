@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Head from "next/head";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
   const handleChange = (event) => {
-    console.log(event.target.name);
     if (event.target.name === "email") {
       setEmail(event.target.value);
     } else {
@@ -22,6 +23,7 @@ export default function Login() {
         { withCredentials: true }
       );
       localStorage.setItem("LOGGED", "IN");
+      router.push("/movies");
     } catch {
       localStorage.removeItem("LOGGED");
       alert("SOMETHIGN WRONG");
@@ -36,7 +38,7 @@ export default function Login() {
       <form onSubmit={formSubmit}>
         <div className="container">
           <label>
-            <b>Username</b>
+            <b>Email</b>
           </label>
           <input
             value={email}
@@ -60,13 +62,6 @@ export default function Login() {
           />
 
           <button type="submit">Login</button>
-        </div>
-
-        <div className="container">
-          <button type="button">Cancel</button>
-          <span>
-            Forgot <a href="#">password?</a>
-          </span>
         </div>
       </form>
     </>
