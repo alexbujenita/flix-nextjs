@@ -1,9 +1,15 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import LogInOut from "../LogInOut/LogInOut";
+import isLogged from "../../utils/isLogged";
 import SearchBar from "../SearchBar/SearchBar";
 import styles from "./NavBar.module.scss";
 
 export default function NavBar() {
+  const [logged, setLogged] = useState(false);
+  useEffect(() => {
+    setLogged(isLogged());
+  });
   return (
     <div className={styles.navBarContainer}>
       <Link href="/movies">
@@ -12,7 +18,7 @@ export default function NavBar() {
         </a>
       </Link>
       <SearchBar />
-      <LogInOut />
+      <LogInOut name={logged} />
     </div>
   );
 }

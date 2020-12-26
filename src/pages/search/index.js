@@ -5,8 +5,8 @@ import styles from "./Search.module.scss";
 import Head from "next/head";
 
 export default function Search({ data, searchOpt }) {
-  console.log(data);
-  console.log(searchOpt);
+  // console.log(data);
+  // console.log(searchOpt);
   const { page, normalizedSearch, includeAdult } = searchOpt;
   const showNav = data.total_pages > 1;
   const nextPage =

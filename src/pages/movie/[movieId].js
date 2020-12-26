@@ -16,7 +16,7 @@ export default function Movie(props) {
         <title>{movie.title || movie.original_title}</title>
         <meta
           name="description"
-          content={`Overall information for the move ${
+          content={`Overall information for the movie ${
             movie.title || movie.original_title
           }`}
         />
@@ -32,6 +32,7 @@ export default function Movie(props) {
           {movie.overview ? <h3>{movie.overview}</h3> : null}
         </div>
       </div>
+      <h2 className={styles.showHideCast}>ADD</h2>
       {trailers?.results?.length ? <Trailers trailers={trailers.results} /> : null}
       {credits?.cast?.length && !displayCast && (
         <h2

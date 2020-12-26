@@ -17,12 +17,12 @@ export default function Login() {
   const formSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(
+      const { data: { firstName } } = await axios.post(
         "http://localhost:3001/api/auth/login",
         { email, password },
         { withCredentials: true }
       );
-      localStorage.setItem("LOGGED", "IN");
+      localStorage.setItem("LOGGED", firstName);
       router.push("/movies");
     } catch {
       localStorage.removeItem("LOGGED");

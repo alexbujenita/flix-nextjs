@@ -1,21 +1,16 @@
-import { useEffect, useState } from "react";
-import isLogged from "../../utils/isLogged";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./LogInOut.module.scss";
 
-export default function LogInOut() {
-  const [logged, setLogged] = useState(false);
-  useEffect(() => {
-    setLogged(isLogged());
-  });
+export default function LogInOut({ name }) {
+
   const router = useRouter();
   function clearLocalStorage() {
     localStorage.clear("LOGGED");
     router.push("/movies");
   }
 
-  return logged ? (
+  return name ? (
     <h3 onClick={clearLocalStorage}>LOGOUT</h3>
   ) : (
     <div className={styles.logOrRegister}>
