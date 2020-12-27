@@ -1,3 +1,5 @@
+@import "src/themes/_typography.scss";
+
 .personContainer {
   display: flex;
   flex-direction: column;
@@ -12,7 +14,7 @@
 
 .personImageContainer > div {
   border-radius: 5%;
-  box-shadow: 3px 0 5px 4px #ccc;
+  box-shadow: 3px 0 5px 4px $box-shadow-1;
 }
 
 @media (max-width: 600px) {

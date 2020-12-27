@@ -3,9 +3,36 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 import Image from "next/image";
 import Head from "next/head";
 import styles from "./Actor.module.scss";
+import { useState } from "react";
 
 export default function ActorInfo({ movies, actor }) {
-  console.log(actor);
+  console.log(movies);
+  const [sorting, setSorting] = useState(0);
+  function sortBy(e) {
+    switch (e.target.id) {
+      case "sort-popularity":
+        movies.sort((m1, m2) => m2.popularity - m1.popularity);
+        break;
+      case "sort-vote-avg":
+        movies.sort((m1, m2) => m2.vote_average - m1.vote_average);
+        break;
+      case "sort-year":
+        movies.sort((m1, m2) => {
+          if (!m1.release_date) m1.release_date = "9999-99-99";
+          if (!m2.release_date) m2.release_date = "9999-99-99";
+          return (
+            parseInt(m2.release_date.split("-")[0]) -
+            parseInt(m1.release_date.split("-")[0])
+          );
+        });
+        break;
+      default:
+        alert("Sneaky");
+        break;
+    }
+
+    setSorting(sorting + 1);
+  }
   return (
     <>
       <Head>
@@ -26,6 +53,18 @@ export default function ActorInfo({ movies, actor }) {
         <div className={styles.actorInfo}>
           <h4>{actor.biography}</h4>
         </div>
+      </div>
+      <div className={styles.sortOptions}>
+        <h1>SORT BY:</h1>
+        <h1 onClick={sortBy} id="sort-popularity">
+          POPULARITY
+        </h1>
+        <h1 onClick={sortBy} id="sort-vote-avg">
+          VOTE AVERAGE
+        </h1>
+        <h1 onClick={sortBy} id="sort-year">
+          YEAR
+        </h1>
       </div>
       <div className={styles.actorMovieContainer}>
         {movies.map((movie) => (
