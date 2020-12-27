@@ -5,11 +5,11 @@ export default function Trailer({ trailer }) {
     <div className={styles.youtubeVideo}>
       <iframe
         src={`https://www.youtube.com/embed/${trailer.key}`}
-        frameborder="0"
+        frameBorder="0"
         width="320"
         height="180"
         allow="autoplay; encrypted-media"
-        allowfullscreen
+        allowFullScreen
         title="video"
       />
     </div>
