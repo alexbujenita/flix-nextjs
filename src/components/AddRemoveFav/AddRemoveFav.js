@@ -42,8 +42,26 @@ export default function AddRemoveFav(props) {
     }
   }
 
+  async function removeMovieFromFavs() {
+    try {
+      await axios.delete(`http://localhost:3001/api/favs/${movie.id}`, {
+        withCredentials: true,
+      });
+      const favs = JSON.parse(localStorage.getItem("UserFavs")).filter(
+        (id) => id !== movie.id
+      );
+      localStorage.setItem("UserFavs", JSON.stringify(favs));
+      setIsFav(false);
+    } catch (error) {
+      console.log(error);
+      alert("Try again later...");
+    }
+  }
+
   return isFav ? (
-    <h2 className={styles.addRemove}>REMOVE</h2>
+    <h2 className={styles.addRemove} onClick={removeMovieFromFavs}>
+      REMOVE
+    </h2>
   ) : (
     <h2 className={styles.addRemove} onClick={addMovieToFavs}>
       ADD FAV
