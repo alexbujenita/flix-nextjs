@@ -5,7 +5,6 @@ import styles from "./AddRemoveFav.module.scss";
 import isLogged from "../../utils/isLogged";
 
 export default function AddRemoveFav(props) {
-  console.log(props);
   const { movie } = props;
   const [isFav, setIsFav] = useState(false);
   const router = useRouter();

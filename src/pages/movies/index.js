@@ -38,7 +38,6 @@ export async function getServerSideProps(ctx) {
   const {
     query: { page = 1 },
   } = ctx;
-  console.log(ctx.req.headers);
   try {
     const { data } = await axios.get(
       `http://localhost:3001/api/movies?page=${

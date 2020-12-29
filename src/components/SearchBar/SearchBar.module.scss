@@ -1,5 +1,8 @@
 .searchContainer {
   display: flex;
+  & > h3 {
+    cursor: pointer;
+  }
 }
 
 .inputs {

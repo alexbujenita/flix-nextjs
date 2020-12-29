@@ -8,16 +8,18 @@ export default function MovieCard(props) {
     <div className={styles.movieCard}>
       <Link href={`/movie/${id}`}>
         <div className={styles.movieCardImage}>
-          <Image
-            src={
-              poster_path
-                ? `https://image.tmdb.org/t/p/w342${poster_path}`
-                : "/image-placeholder-vertical.jpg"
-            }
-            alt={title}
-            width={342}
-            height={513}
-          />
+          <a>
+            <Image
+              src={
+                poster_path
+                  ? `https://image.tmdb.org/t/p/w342${poster_path}`
+                  : "/image-placeholder-vertical.jpg"
+              }
+              alt={title}
+              width={342}
+              height={513}
+            />
+          </a>
         </div>
       </Link>
       <p className={styles.movieTitle}>{title}</p>

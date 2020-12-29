@@ -75,7 +75,7 @@ export default function RegisterPage() {
           </label>
           <input
             value={email}
-            type="text"
+            type="email"
             onChange={handleChange}
             placeholder="Enter Email"
             name="email"
@@ -86,7 +86,7 @@ export default function RegisterPage() {
             <b>Password</b>
           </label>
           <input
-            type="text"
+            type="password"
             placeholder="Enter Password"
             value={password}
             onChange={handleChange}

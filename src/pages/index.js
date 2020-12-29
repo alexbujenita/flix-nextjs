@@ -2,7 +2,6 @@ import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
-  console.log("INDEX.JS")
   return (
     <div className={styles.container}>
       <Head>
