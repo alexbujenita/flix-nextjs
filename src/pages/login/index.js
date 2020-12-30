@@ -2,6 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import axios from "axios";
 import { useRouter } from "next/router";
+import styles from './Login.module.scss';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -40,7 +41,7 @@ export default function Login() {
     } catch (e){
       console.log(e)
       localStorage.removeItem("LOGGED");
-      alert("SOMETHIGN WRONG");
+      alert("SOMETHING WRONG");
     }
   };
   return (
@@ -50,7 +51,8 @@ export default function Login() {
         <meta name="description" content="A login page" />
       </Head>
       <form onSubmit={formSubmit}>
-        <div className="container">
+        <section className={styles.loginContainer}>
+        <div className={styles.loginDetails}>
           <label>
             <b>Email</b>
           </label>
@@ -62,7 +64,8 @@ export default function Login() {
             name="email"
             required
           />
-
+        </div>
+        <div className={styles.loginDetails}>
           <label>
             <b>Password</b>
           </label>
@@ -73,10 +76,11 @@ export default function Login() {
             onChange={handleChange}
             name="psw"
             required
-          />
-
-          <button type="submit">Login</button>
+          />          
         </div>
+
+          <button type="submit" className={styles.loginButton}>Login</button>
+        </section>
       </form>
     </>
   );

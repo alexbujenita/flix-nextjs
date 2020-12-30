@@ -2,6 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import axios from "axios";
 import { useRouter } from "next/router";
+import styles from './Register.module.scss';
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -36,7 +37,7 @@ export default function RegisterPage() {
       );
       router.push("/login");
     } catch {
-      alert("SOMETHIGN WRONG");
+      alert("SOMETHING WRONG");
     }
   };
   return (
@@ -46,7 +47,8 @@ export default function RegisterPage() {
         <meta name="description" content="A register page." />
       </Head>
       <form onSubmit={formSubmit}>
-        <div className="container">
+        <section className={styles.registerContainer}>
+        <div className={styles.registerDetails}>
           <label>
             <b>First Name</b>
           </label>
@@ -58,7 +60,9 @@ export default function RegisterPage() {
             name="firstname"
             required
           />
+        </div>
 
+        <div className={styles.registerDetails}>
           <label>
             <b>Last Name</b>
           </label>
@@ -70,6 +74,8 @@ export default function RegisterPage() {
             name="surname"
             required
           />
+        </div>
+        <div className={styles.registerDetails}>
           <label>
             <b>Email</b>
           </label>
@@ -81,7 +87,8 @@ export default function RegisterPage() {
             name="email"
             required
           />
-
+        </div>
+        <div className={styles.registerDetails}>
           <label>
             <b>Password</b>
           </label>
@@ -93,9 +100,9 @@ export default function RegisterPage() {
             name="psw"
             required
           />
-
-          <button type="submit">Register</button>
         </div>
+          <button type="submit" className={styles.registerButton}>Register</button>
+        </section>
       </form>
     </>
   );
