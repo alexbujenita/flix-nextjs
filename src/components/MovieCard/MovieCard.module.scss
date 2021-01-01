@@ -7,11 +7,16 @@
 
 .movieTitle {
   max-width: 300px;
+  display: inline-block;
 }
 
 .movieCardImage {
   border-radius: 5px;
   box-shadow: 3px 3px 5px 6px $box-shadow-1;
+}
+
+.releaseYear {
+  font-size: 12px;
 }
 
 .movieCardImage div {

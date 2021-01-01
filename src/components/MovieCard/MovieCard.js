@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./MovieCard.module.scss";
 
 export default function MovieCard(props) {
-  const { title, poster_path, id } = props;
+  const { title, poster_path, id, release_date } = props;
   return (
     <div className={styles.movieCard}>
       <Link href={`/movie/${id}`}>
@@ -23,6 +23,12 @@ export default function MovieCard(props) {
         </div>
       </Link>
       <p className={styles.movieTitle}>{title}</p>
+      {release_date && (
+        <span className={styles.releaseYear}>
+          {" "}
+          ({release_date.substring(0, 4)})
+        </span>
+      )}
     </div>
   );
 }

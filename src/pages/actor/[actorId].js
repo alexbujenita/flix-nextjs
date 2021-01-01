@@ -17,8 +17,8 @@ export default function ActorInfo({ movies, actor }) {
         break;
       case "sort-year":
         movies.sort((m1, m2) => {
-          if (!m1.release_date) m1.release_date = "9999-99-99";
-          if (!m2.release_date) m2.release_date = "9999-99-99";
+          if (!m1.release_date) m1.release_date = "0000-99-99";
+          if (!m2.release_date) m2.release_date = "0000-99-99";
           return (
             parseInt(m2.release_date.split("-")[0]) -
             parseInt(m1.release_date.split("-")[0])
