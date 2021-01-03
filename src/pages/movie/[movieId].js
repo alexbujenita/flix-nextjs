@@ -8,7 +8,6 @@ import styles from "./Movie.module.scss";
 
 export default function Movie(props) {
   const { credits, movie, trailers } = props;
-  console.log({movie}, {credits});
   const [displayCast, setDisplayCast] = useState(false);
 
 
