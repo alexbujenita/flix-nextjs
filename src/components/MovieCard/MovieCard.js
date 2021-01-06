@@ -4,6 +4,7 @@ import styles from "./MovieCard.module.scss";
 
 export default function MovieCard(props) {
   const { title, poster_path, id, release_date } = props;
+
   return (
     <div className={styles.movieCard}>
       <Link href={`/movie/${id}`}>

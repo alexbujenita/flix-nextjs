@@ -17,6 +17,11 @@ export default function NavBar() {
           <h3>Movies</h3>
         </a>
       </Link>
+      <Link href="/random-movies">
+        <a>
+          <h3>RaNDom</h3>
+        </a>
+      </Link>
       {logged && (
         <Link href="/user-favs">
           <a>
