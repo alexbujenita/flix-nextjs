@@ -11,3 +11,20 @@
   display: flex;
   justify-content: space-around;
 }
+
+.refresh {
+  text-shadow: 1px 0 0 white, 0 -1px 0 white, 0 1px 0 white, -1px 0 0 white;
+  border: 3px solid black;
+  background: rgba(255,255,255,0.5);
+  display: inline-block;
+  border-radius: 5px;
+  padding: 15px 20%;
+  position: sticky;
+  cursor: pointer;
+  z-index: 200;
+  top: 15%;
+}
+
+.mainContainer {
+  text-align: center;
+}

@@ -7,8 +7,10 @@ import styles from "./RandomMovies.module.scss";
 export default function RandomMovies({ data }) {
   const [movies, setMovies] = useState(data);
 
-  async function sortBy() {
-    const { data: newMovies } = await axios.get("http://localhost:3001/api/random");
+  async function refreshMovies() {
+    const { data: newMovies } = await axios.get(
+      "http://localhost:3001/api/random"
+    );
     setMovies(newMovies);
   }
   return (
@@ -17,11 +19,15 @@ export default function RandomMovies({ data }) {
         <title>Random movies</title>
         <meta name="description" content="Random movies." />
       </Head>
-      <h1 onClick={sortBy}>ASDASD</h1>
-      <div className={styles.moviesContainer}>
-        {movies.map((movie) => {
-          return <MovieCard key={movie.id} {...movie} />;
-        })}
+      <div className={styles.mainContainer}>
+        <h3 className={styles.refresh} onClick={refreshMovies}>
+          Refresh movies
+        </h3>
+        <div className={styles.moviesContainer}>
+          {movies.map((movie) => {
+            return <MovieCard key={movie.id} {...movie} />;
+          })}
+        </div>
       </div>
     </>
   );
