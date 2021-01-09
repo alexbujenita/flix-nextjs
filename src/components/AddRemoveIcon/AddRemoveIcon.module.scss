@@ -1,0 +1,41 @@
+@import "src/themes/_typography.scss";
+
+.addIcon {
+  display: inline-flex;
+  -moz-box-pack: end;
+  z-index: 50;
+  color: $primary-colour-3;
+  position: absolute;
+  border-radius: 100%;
+  bottom: 80px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary-colour-3;
+  opacity: 0.75;
+  filter: grayscale(40%);
+  &:hover {
+    opacity: 1;
+    filter: grayscale(0);
+    cursor: default;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+}
+
+.iconPlusSign,
+.iconMinusSign {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  line-height: 30px;
+}
+
+.iconPlusSign {
+  color: $green-1;
+}
+
+.iconMinusSign {
+  color: $red-1;
+}
