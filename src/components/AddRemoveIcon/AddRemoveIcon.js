@@ -5,8 +5,10 @@ import { addMovieToFavs, removeMovieFromFavs } from "./utils";
 
 export default function AddRemoveIcon({ movie }) {
   const [isFav, setIsFav] = useState(false);
+  const [isUserLogged, setIsUserLogged] = useState(false);
   useEffect(() => {
     const favs = localStorage.getItem("UserFavs");
+    setIsUserLogged(isLogged());
     if (favs) {
       const favsArray = JSON.parse(favs);
       setIsFav(favsArray.includes(movie.id));
@@ -22,8 +24,8 @@ export default function AddRemoveIcon({ movie }) {
       setIsFav(true);
     }
   }
-  if (!isLogged()) return null;
-  // console.log(movie);
+  if (!isUserLogged) return null;
+
   return (
     <div className={styles.addIcon} onClick={addOrRemoveFav}>
       {isFav ? (

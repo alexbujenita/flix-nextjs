@@ -21,7 +21,10 @@ export default function AddRemoveFav(props) {
       addMovieToFavs(movie.id, movie.title, movie.poster_path);
       setIsFav(true);
     } else {
-      router.push("/login");
+      router.push({
+        pathname: "/login",
+        query: {previous: `/movie/${movie.id}`}
+      });
     }
   }
 
