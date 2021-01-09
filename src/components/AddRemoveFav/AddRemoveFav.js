@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
 import styles from "./AddRemoveFav.module.scss";
 import isLogged from "../../utils/isLogged";
+import { addMovieToFavs, removeMovieFromFavs } from "../AddRemoveIcon/utils";
 
 export default function AddRemoveFav(props) {
   const { movie } = props;
@@ -16,53 +16,26 @@ export default function AddRemoveFav(props) {
     }
   }, []);
 
-  async function addMovieToFavs() {
+  function onClickAdd() {
     if (isLogged()) {
-      try {
-        await axios.post(
-          "http://localhost:3001/api/favs",
-          {
-            movieRefId: movie.id,
-            movieTitle: movie.title,
-            moviePosterPath: movie.poster_path,
-          },
-          { withCredentials: true }
-        );
-        const favs = JSON.parse(localStorage.getItem("UserFavs"));
-        favs.push(movie.id);
-        localStorage.setItem("UserFavs", JSON.stringify(favs));
-        setIsFav(true);
-      } catch (error) {
-        console.log(error);
-        alert("Try again later...");
-      }
+      addMovieToFavs(movie.id, movie.title, movie.poster_path);
+      setIsFav(true);
     } else {
       router.push("/login");
     }
   }
 
-  async function removeMovieFromFavs() {
-    try {
-      await axios.delete(`http://localhost:3001/api/favs/${movie.id}`, {
-        withCredentials: true,
-      });
-      const favs = JSON.parse(localStorage.getItem("UserFavs")).filter(
-        (id) => id !== movie.id
-      );
-      localStorage.setItem("UserFavs", JSON.stringify(favs));
-      setIsFav(false);
-    } catch (error) {
-      console.log(error);
-      alert("Try again later...");
-    }
+  async function onClickRemove() {
+    removeMovieFromFavs(movie.id);
+    setIsFav(false);
   }
 
   return isFav ? (
-    <h2 className={styles.addRemove} onClick={removeMovieFromFavs}>
+    <h2 className={styles.addRemove} onClick={onClickRemove}>
       REMOVE
     </h2>
   ) : (
-    <h2 className={styles.addRemove} onClick={addMovieToFavs}>
+    <h2 className={styles.addRemove} onClick={onClickAdd}>
       ADD FAV
     </h2>
   );
