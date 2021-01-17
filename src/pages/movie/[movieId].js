@@ -1,6 +1,7 @@
 import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import AddRemoveFav from "../../components/AddRemoveFav/AddRemoveFav";
 import PersonCard from "../../components/PersonCard/PersonCard";
@@ -43,6 +44,11 @@ export default function Movie(props) {
         </div>
       </div>
       <AddRemoveFav movie={movie} />
+      <Link href={`/movie/similar-movies/${movie.id}`}>
+        <a>
+          <h2 className={styles.showHideCast}>SIMILAR MOVIES</h2>
+        </a>
+      </Link>
       {trailers?.results?.length ? (
         <Trailers trailers={trailers.results} />
       ) : null}
