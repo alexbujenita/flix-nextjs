@@ -1,10 +1,10 @@
 import axios from "axios";
 import Link from "next/link";
 import MovieCard from "../../../components/MovieCard/MovieCard";
-import styles from "./SimilarMovies.module.scss";
+import styles from "./Recommendations.module.scss";
 import Head from "next/head";
 
-export default function SimilarMovies({ data, currentMovieId }) {
+export default function Recommendations({ data, currentMovieId }) {
   const { page, results, total_pages } = data;
   const showNav = total_pages > 1;
   const nextPage =
@@ -13,8 +13,8 @@ export default function SimilarMovies({ data, currentMovieId }) {
   return (
     <>
       <Head>
-        <title>Similar movies</title>
-        <meta name="description" content="Showing similar results." />
+        <title>Recommended movies</title>
+        <meta name="description" content="Showing recommended results." />
       </Head>
       <div className={styles.moviesContainer}>
         {results.map((m) => (
@@ -42,17 +42,17 @@ export default function SimilarMovies({ data, currentMovieId }) {
 export async function getServerSideProps(ctx) {
   const {
     query: { page = 1 },
-    params: { movieIdSimilar },
+    params: { recMovieId },
   } = ctx;
   try {
     const {
       data,
     } = await axios.get(
-      `http://localhost:3001/api/movie/${movieIdSimilar}/similar?pageNum=${page}`,
+      `http://localhost:3001/api/movie/${recMovieId}/recommendations?pageNum=${page}`,
       { withCredentials: true }
     );
     return {
-      props: { data, currentMovieId: movieIdSimilar },
+      props: { data, currentMovieId: recMovieId },
     };
   } catch {
     return {
