@@ -49,6 +49,11 @@ export default function Movie(props) {
           <h2 className={styles.showHideCast}>SIMILAR MOVIES</h2>
         </a>
       </Link>
+      <Link href={`/movie/recommendations/${movie.id}`}>
+        <a>
+          <h2 className={styles.showHideCast}>RECOMMENDED MOVIES</h2>
+        </a>
+      </Link>
       {trailers?.results?.length ? (
         <Trailers trailers={trailers.results} />
       ) : null}
