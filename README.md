@@ -26,6 +26,14 @@ npx next build
 npx next start
 ```
 
+Navigate to localhost:3000/movies and enjoy.
+
+## Tech info
+- Lazy loaded and cached images
+- Cookies for auth
+- Server side rendered with static pages like the auth ones
+- React Hooks for state and component "lifecycle"
+
 ## Features
 - Film browser and search functionality
 - Account creation
