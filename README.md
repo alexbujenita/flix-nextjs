@@ -45,6 +45,6 @@ Navigate to localhost:3000/movies and enjoy.
 - Random films based on year and rating
 
 ## Screenshots
-![search](./screenshots/search.png)
-![film](./screenshots/film.png)
-![actor](./screenshots/actor.png)
+![search](./screenshots/search.jpg)
+![film](./screenshots/film.jpg)
+![actor](./screenshots/actor.jpg)
