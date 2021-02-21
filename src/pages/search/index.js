@@ -10,7 +10,9 @@ export default function Search({ data, searchOpt }) {
   const nextPage =
     parseInt(page) >= data.total_pages ? data.total_pages : parseInt(page) + 1;
   const prevPage = parseInt(page) <= 1 ? 1 : parseInt(page) - 1;
-  return (
+  console.log(data);
+  const searchDataAvailable = !!data.results.length;
+  return searchDataAvailable ? (
     <>
       <Head>
         <title>Search results</title>
@@ -40,6 +42,10 @@ export default function Search({ data, searchOpt }) {
         </div>
       ) : null}
     </>
+  ) : (
+    <h1 className={styles.searchNotFound}>
+      Nothing found, try a different search term
+    </h1>
   );
 }
 
