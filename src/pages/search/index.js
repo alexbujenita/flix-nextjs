@@ -1,8 +1,8 @@
 import axios from "axios";
-import Link from "next/link";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import styles from "./Search.module.scss";
 import Head from "next/head";
+import BottomNav from "../../components/BottomNav/BottomNav";
 
 export default function Search({ data, searchOpt }) {
   const { page, normalizedSearch, includeAdult } = searchOpt;
@@ -10,7 +10,7 @@ export default function Search({ data, searchOpt }) {
   const nextPage =
     parseInt(page) >= data.total_pages ? data.total_pages : parseInt(page) + 1;
   const prevPage = parseInt(page) <= 1 ? 1 : parseInt(page) - 1;
-  console.log(data);
+
   const searchDataAvailable = !!data.results.length;
   return searchDataAvailable ? (
     <>
@@ -24,22 +24,10 @@ export default function Search({ data, searchOpt }) {
         ))}
       </div>
       {showNav ? (
-        <div className={styles.moviesNavigation}>
-          <Link
-            href={`/search?searchTerm=${normalizedSearch}&includeAdult=${includeAdult}&page=${prevPage}`}
-          >
-            <a>
-              <h1>PREV</h1>
-            </a>
-          </Link>
-          <Link
-            href={`/search?searchTerm=${normalizedSearch}&includeAdult=${includeAdult}&page=${nextPage}`}
-          >
-            <a>
-              <h1>NEXT</h1>
-            </a>
-          </Link>
-        </div>
+        <BottomNav
+          prev={`/search?searchTerm=${normalizedSearch}&includeAdult=${includeAdult}&page=${prevPage}`}
+          next={`/search?searchTerm=${normalizedSearch}&includeAdult=${includeAdult}&page=${nextPage}`}
+        />
       ) : null}
     </>
   ) : (

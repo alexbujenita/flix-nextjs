@@ -1,0 +1,7 @@
+@import "src/themes/_typography.scss";
+
+.moviesNavigation {
+  color: $primary-colour-2;
+  display: flex;
+  justify-content: space-around;
+}

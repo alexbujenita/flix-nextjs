@@ -1,8 +1,8 @@
 import axios from "axios";
 import MovieCard from "../../components/MovieCard/MovieCard";
-import Link from "next/link";
 import Head from "next/head";
 import styles from "./Movies.module.scss";
+import BottomNav from "../../components/BottomNav/BottomNav";
 
 export default function Movies({ page, results }) {
   const nextPage = page >= 500 ? 500 : page + 1;
@@ -18,18 +18,10 @@ export default function Movies({ page, results }) {
           return <MovieCard key={movie.id} {...movie} />;
         })}
       </div>
-      <div className={styles.moviesNavigation}>
-        <Link href={`/movies?page=${prevPage}`}>
-          <a>
-            <h1>PREV</h1>
-          </a>
-        </Link>
-        <Link href={`/movies?page=${nextPage}`}>
-          <a>
-            <h1>NEXT</h1>
-          </a>
-        </Link>
-      </div>
+      <BottomNav
+        prev={`/movies?page=${prevPage}`}
+        next={`/movies?page=${nextPage}`}
+      />
     </>
   );
 }

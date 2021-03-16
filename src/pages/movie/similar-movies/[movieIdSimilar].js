@@ -1,8 +1,8 @@
 import axios from "axios";
-import Link from "next/link";
 import MovieCard from "../../../components/MovieCard/MovieCard";
 import styles from "./SimilarMovies.module.scss";
 import Head from "next/head";
+import BottomNav from "../../../components/BottomNav/BottomNav";
 
 export default function SimilarMovies({ data, currentMovieId }) {
   const { page, results, total_pages } = data;
@@ -22,18 +22,10 @@ export default function SimilarMovies({ data, currentMovieId }) {
         ))}
       </div>
       {showNav ? (
-        <div className={styles.moviesNavigation}>
-          <Link href={`/movie/similar-movies/${currentMovieId}?page=${prevPage}`}>
-            <a>
-              <h1>PREV</h1>
-            </a>
-          </Link>
-          <Link href={`/movie/similar-movies/${currentMovieId}?page=${nextPage}`}>
-            <a>
-              <h1>NEXT</h1>
-            </a>
-          </Link>
-        </div>
+        <BottomNav
+          prev={`/movie/similar-movies/${currentMovieId}?page=${prevPage}`}
+          next={`/movie/similar-movies/${currentMovieId}?page=${nextPage}`}
+        />
       ) : null}
     </>
   );
