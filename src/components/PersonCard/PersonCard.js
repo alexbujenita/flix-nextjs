@@ -1,35 +1,50 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./PersonCard.module.scss";
+import PropTypes from "prop-types";
 
-export default function PersonCard(props) {
+function PersonCard({
+  id,
+  fromSearch,
+  profile_path,
+  original_name,
+  name,
+  character,
+}) {
+  const width = fromSearch ? 342 : parseInt(342 / 3);
+  const height = fromSearch ? 513 : parseInt(523 / 3);
+
   return (
-    <div className={styles.personContainer}>
-      <Link href={`/actor/${props.id}`}>
+    <div
+      className={
+        fromSearch ? styles.personContainerSearch : styles.personContainer
+      }
+    >
+      <Link href={`/actor/${id}`}>
         <div className={styles.personImageContainer}>
           <a>
             <Image
               src={
-                props.profile_path
-                  ? `https://image.tmdb.org/t/p/w342${props.profile_path}`
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w342${profile_path}`
                   : "/image-placeholder-vertical.jpg"
               }
-              alt={props.original_name}
-              width={parseInt(342 / 3)}
-              height={parseInt(513 / 3)}
+              alt={original_name}
+              width={width}
+              height={height}
             />
           </a>
         </div>
       </Link>
       <div className={styles.personNames}>
         <p>
-          <b>{props.original_name}</b>
+          <b>{original_name || name}</b>
         </p>
-        {props.character ? (
+        {character ? (
           <>
             <p>as</p>{" "}
             <p>
-              <i>{props.character}</i>
+              <i>{character}</i>
             </p>
           </>
         ) : null}
@@ -37,3 +52,14 @@ export default function PersonCard(props) {
     </div>
   );
 }
+
+PersonCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  fromSearch: PropTypes.bool,
+  profile_path: PropTypes.string,
+  original_name: PropTypes.string,
+  name: PropTypes.string,
+  character: PropTypes.string,
+};
+
+export default PersonCard;
