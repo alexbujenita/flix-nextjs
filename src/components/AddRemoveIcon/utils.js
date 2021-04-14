@@ -12,7 +12,7 @@ export async function addMovieToFavs(movieId, movieTitle, moviePosterPath) {
       {
         movieRefId: movieId,
         movieTitle: movieTitle,
-        moviePosterPath: moviePosterPath,
+        moviePosterPath: moviePosterPath || "",
       },
       { withCredentials: true }
     );
