@@ -4,6 +4,22 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 import styles from "./userFavs.module.scss";
 
 export default function UserFavs(props) {
+  async function downloadFavsAsPdf() {
+    console.log("starting");
+    const { data } = await axios.get("http://localhost:3001/api/favs/pdf", {
+      withCredentials: true,
+      responseType: "blob",
+    });
+    const url = URL.createObjectURL(new Blob([data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "favs.pdf");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    console.log("finished");
+  }
   return (
     <>
       <Head>
@@ -13,6 +29,9 @@ export default function UserFavs(props) {
           content="Showing the user's favourites results."
         />
       </Head>
+      <div className={styles.downloadContainer}>
+        <h1 onClick={downloadFavsAsPdf} className={styles.downloadText}>Download your favourites as PDF</h1>
+      </div>
       <div className={styles.moviesContainer}>
         {props.UserFavourites.map((m) => (
           <MovieCard
