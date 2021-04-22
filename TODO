@@ -5,10 +5,6 @@
 [] Better movie info
     - Added image
 
-[X] Similar movies route
-
 [] Create components for duplicated code
 
 [] Display some message if nothing was found
-
-[X] Route for recommendations

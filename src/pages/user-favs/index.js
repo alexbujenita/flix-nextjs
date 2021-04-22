@@ -1,11 +1,14 @@
 import axios from "axios";
 import Head from "next/head";
+import { useState } from "react";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import styles from "./userFavs.module.scss";
 
 export default function UserFavs(props) {
+  const [inProgress, setInProgress] = useState(false);
+
   async function downloadFavsAsPdf() {
-    console.log("starting");
+    setInProgress(true);
     const { data } = await axios.get("http://localhost:3001/api/favs/pdf", {
       withCredentials: true,
       responseType: "blob",
@@ -18,7 +21,7 @@ export default function UserFavs(props) {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-    console.log("finished");
+    setInProgress(false);
   }
   return (
     <>
@@ -30,7 +33,16 @@ export default function UserFavs(props) {
         />
       </Head>
       <div className={styles.downloadContainer}>
-        <h1 onClick={downloadFavsAsPdf} className={styles.downloadText}>Download your favourites as PDF</h1>
+        {inProgress ? (
+          <>
+            <h3>Please wait while for the file to download.</h3>
+            <h3>Usually a minute for 50 movies.</h3>
+          </>
+        ) : (
+          <h1 onClick={downloadFavsAsPdf} className={styles.downloadText}>
+            Download your favourites as PDF
+          </h1>
+        )}
       </div>
       <div className={styles.moviesContainer}>
         {props.UserFavourites.map((m) => (
@@ -55,11 +67,10 @@ export async function getServerSideProps(ctx) {
       "http://localhost:3001/api/favs/user-favs",
       {
         headers: {
-          Authorization: `Bearer ${ctx.req.headers.cookie}`,
-          cookie: ctx.req.headers.cookie || "",
+          Cookie: ctx.req.headers.cookie || "",
         },
-      },
-      { withCredentials: true }
+        withCredentials: true,
+      }
     );
     return {
       props: data,
