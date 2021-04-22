@@ -36,8 +36,10 @@ Navigate to localhost:3000/movies and enjoy.
 
 ## Features
 - Film browser and search functionality
+- Can search for actors
 - Account creation
 - List of personal favourites
+- Download a PDF document with the favourites
 - Recommendations and similar films based on a film
 - Display the cast of a film
 - Display the trailers of a film
