@@ -1,7 +1,9 @@
+import Cookies from "js-cookie";
+
 /**
- * temporary solution to know if a user is logged in
- * and the name
+ * Temporary solution to know if a user is logged in
+ * @return {string} - the cookie
  */
 export default function isLogged() {
-  return localStorage.getItem("LOGGED");
+  return Boolean(Cookies.get("JWT_TOKEN_MY_FLIX"));
 }

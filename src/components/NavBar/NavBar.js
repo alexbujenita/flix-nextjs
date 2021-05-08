@@ -8,7 +8,10 @@ import styles from "./NavBar.module.scss";
 export default function NavBar() {
   const [logged, setLogged] = useState(false);
   useEffect(() => {
-    setLogged(isLogged());
+    const isLoggedIn = isLogged();
+    if (logged !== isLoggedIn) {
+      setLogged(isLoggedIn);
+    }
   });
   return (
     <div className={styles.navBarContainer}>
