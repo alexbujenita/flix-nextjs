@@ -59,8 +59,11 @@ export default function UserFavs(props) {
 }
 
 export async function getServerSideProps(ctx) {
+  console.log(ctx.req.headers.cookie)
   if (!ctx.req.headers.cookie) {
-    return { props: { error: "User not logged in" } };
+    return {
+      notFound: true,
+    };
   }
   try {
     const { data } = await axios.get(

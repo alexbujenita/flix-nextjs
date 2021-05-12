@@ -38,7 +38,8 @@ export default function Login(props) {
       } else {
         localStorage.setItem("UserFavs", JSON.stringify([]));
       }
-      router.push(router?.query?.previous ?? "/movies");
+      router.push(localStorage.getItem("previousMovie") ?? "/movies");
+      localStorage.removeItem("previousMovie")
     } catch (e) {
       console.log(e);
       localStorage.removeItem("LOGGED");
