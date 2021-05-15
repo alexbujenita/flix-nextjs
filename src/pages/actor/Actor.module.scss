@@ -6,6 +6,10 @@
   padding-bottom: 40px;
   align-items: center;
   text-align: center;
+  @media only screen and (max-width: 650px) {
+    flex-direction: column;
+    padding-bottom: 0;
+  }
 }
 
 .imageContainer {
@@ -32,6 +36,11 @@
 .sortOptions {
   display: flex;
   justify-content: space-evenly;
+  @media only screen and (max-width: 650px) {
+    font-size: 12px;
+    text-align: center;
+    flex-direction: column;
+  }
 }
 
 .sortOptions h1:not(:first-child) {

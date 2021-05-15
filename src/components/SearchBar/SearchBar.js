@@ -12,6 +12,7 @@ export default function SearchBar() {
 
   const searchResults = (event) => {
     if (event.key === "Enter" && !!search) {
+      setDisplay(false);
       router.push(
         `/search?searchTerm=${search}&includeAdult=${adult}&entity=${
           person ? "person" : "movie"
@@ -25,7 +26,9 @@ export default function SearchBar() {
   };
 
   return (
-    <div className={styles.searchContainer}>
+    <div
+      className={display ? styles.searchContainerOpen : styles.searchContainer}
+    >
       <h3 onClick={() => setDisplay(!display)}>
         <span>S</span>earch
       </h3>

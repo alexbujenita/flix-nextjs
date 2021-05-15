@@ -4,6 +4,9 @@
   color: $primary-colour-1;
   justify-content: center;
   display: flex;
+  @media only screen and (max-width: 650px) {
+    flex-flow: wrap-reverse;
+  }
 }
 
 .movieCastContainer {
@@ -16,13 +19,17 @@
   text-align: center;
   max-width: 70%;
   padding: 20px;
+  @media only screen and (max-width: 650px) {
+    padding: 5px;
+    max-width: 90%;
+  }
 }
 
 .showHideCast {
   text-align: center;
   cursor: pointer;
   color: $primary-colour-2;
-  animation: text-focus-in 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: text-focus-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 /* ----------------------------------------------

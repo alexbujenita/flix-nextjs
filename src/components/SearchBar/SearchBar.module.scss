@@ -5,6 +5,23 @@
   }
 }
 
+.searchContainerOpen {
+  display: flex;
+  & > h3 {
+    cursor: pointer;
+    @media only screen and (max-width: 650px) {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 650px) {
+    background-color: white;
+    position: fixed;
+    z-index: 200;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
 .inputs {
   display: flex;
   align-items: center;

@@ -59,7 +59,6 @@ export default function UserFavs(props) {
 }
 
 export async function getServerSideProps(ctx) {
-  console.log(ctx.req.headers.cookie)
   if (!ctx.req.headers.cookie) {
     return {
       notFound: true,
