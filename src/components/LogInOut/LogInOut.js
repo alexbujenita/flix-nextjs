@@ -25,11 +25,11 @@ export default function LogInOut({ name }) {
     </h3>
   ) : (
     <div className={styles.logOrRegister}>
-      <Link href="/login">
+      <Link href="/login" passHref>
         <h3 className={styles.elements}>LOGIN</h3>
       </Link>
       <h2>&nbsp; / &nbsp;</h2>
-      <Link href="/register">
+      <Link href="/register" passHref>
         <h3 className={styles.elements}>REGISTER</h3>
       </Link>
     </div>

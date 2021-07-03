@@ -1,3 +1,5 @@
+@import "src/themes/_typography.scss";
+
 .moviesContainer {
   display: flex;
   flex-wrap: wrap;
@@ -21,4 +23,22 @@
   @media only screen and (max-width: 650px) {
     padding: 10px 30px;
   }
+}
+
+.watchedFilter {
+  display: flex;
+  font-size: 20px;
+  padding-bottom: 15px;
+  color: $primary-colour-2;
+  justify-content: space-evenly;
+}
+
+.watchedFilter > span:nth-child(odd) {
+  cursor: pointer;
+  user-select: none;
+}
+
+.active {
+  color: $primary-colour-1;
+  text-decoration: underline double;
 }

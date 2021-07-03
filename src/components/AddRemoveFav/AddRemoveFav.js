@@ -1,24 +1,15 @@
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "./AddRemoveFav.module.scss";
 import isLogged from "../../utils/isLogged";
 import { addMovieToFavs, removeMovieFromFavs } from "../AddRemoveIcon/utils";
 
 export default function AddRemoveFav(props) {
-  const { movie } = props;
-  const [isFav, setIsFav] = useState(false);
+  const { movie, isFav, setIsFav, movieId } = props;
   const router = useRouter();
-  useEffect(() => {
-    const favs = localStorage.getItem("UserFavs");
-    if (favs) {
-      const favsArray = JSON.parse(favs);
-      setIsFav(favsArray.includes(movie.id));
-    }
-  }, []);
 
-  function onClickAdd() {
+  async function onClickAdd() {
     if (isLogged()) {
-      addMovieToFavs(movie.id, movie.title, movie.poster_path);
+      await addMovieToFavs(movie.id, movie.title, movie.poster_path);
       setIsFav(true);
     } else {
       localStorage.setItem("previousMovie", `/movie/${movie.id}`)
@@ -27,7 +18,7 @@ export default function AddRemoveFav(props) {
   }
 
   async function onClickRemove() {
-    removeMovieFromFavs(movie.id);
+    await removeMovieFromFavs(movie.id);
     setIsFav(false);
   }
 

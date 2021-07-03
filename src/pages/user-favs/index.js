@@ -6,6 +6,20 @@ import styles from "./userFavs.module.scss";
 
 export default function UserFavs(props) {
   const [inProgress, setInProgress] = useState(false);
+  const [active, setActive] = useState("none");
+
+  function setFilter(action) {
+    if (action === active) {
+      setActive("none");
+    } else {
+      setActive(action);
+    }
+  }
+
+  function filterWatched(movie) {
+    if (active === "none") return true;
+    return active === "seen" ? movie.seen : !movie.seen;
+  }
 
   async function downloadFavsAsPdf() {
     setInProgress(true);
@@ -44,10 +58,29 @@ export default function UserFavs(props) {
           </h1>
         )}
       </div>
+      <div className={styles.watchedFilter}>
+        <span
+          className={active === "seen" ? styles.active : ""}
+          onClick={() => {
+            setFilter("seen");
+          }}
+        >
+          SEEN
+        </span>
+        <span>|</span>
+        <span
+          className={active === "unseen" ? styles.active : ""}
+          onClick={() => {
+            setFilter("unseen");
+          }}
+        >
+          UNSEEN
+        </span>
+      </div>
       <div className={styles.moviesContainer}>
-        {props.UserFavourites.map((m) => (
+        {props.UserFavourites.filter(filterWatched).map((m) => (
           <MovieCard
-            key={m.id}
+            key={m.movieRefId}
             poster_path={m.moviePosterPath}
             title={m.movieTitle}
             id={m.movieRefId}

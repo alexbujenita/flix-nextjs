@@ -20,7 +20,7 @@ function PersonCard({
         fromSearch ? styles.personContainerSearch : styles.personContainer
       }
     >
-      <Link href={`/actor/${id}`}>
+      <Link href={`/actor/${id}`} passHref>
         <div className={styles.personImageContainer}>
           <a>
             <Image

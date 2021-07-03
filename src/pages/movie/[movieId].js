@@ -2,16 +2,36 @@ import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import isLogged from "../../utils/isLogged";
 import AddRemoveFav from "../../components/AddRemoveFav/AddRemoveFav";
+import MarkSeenUnseen from "../../components/MarkSeenUnseen/MarkSeenUnseen";
 import PersonCard from "../../components/PersonCard/PersonCard";
 import Trailers from "../../components/Trailers/Trailers";
 import styles from "./Movie.module.scss";
 
 export default function Movie(props) {
-  const { credits, movie, trailers } = props;
+  const { movie } = props;
+  const { credits, videos: trailers } = movie;
+  const [isFav, setIsFav] = useState(false);
+  const [seen, setSeen] = useState(false);
   const [displayCast, setDisplayCast] = useState(false);
   const { poster_path, title, original_title, tagline, overview } = movie;
+
+  useEffect(() => {
+    const getPossibleFav = async () => {
+      const { data } = await axios.get(
+        `http://localhost:3001/api/favs/user-favs/${parseInt(movie.id)}`,
+        { withCredentials: true }
+      );
+      if (data) {
+        console.log(data);
+        setIsFav(true);
+        setSeen(data.seen);
+      }
+    };
+    isLogged() && getPossibleFav();
+  }, [movie.id]);
 
   return (
     <>
@@ -43,7 +63,8 @@ export default function Movie(props) {
           {overview ? <h3>{overview}</h3> : null}
         </div>
       </div>
-      <AddRemoveFav movie={movie} />
+      <AddRemoveFav isFav={isFav} setIsFav={setIsFav} movie={movie} />
+      <MarkSeenUnseen seen={seen} setSeen={setSeen} movie={movie} />
       <Link href={`/movie/similar-movies/${movie.id}`}>
         <a>
           <h2 className={styles.showHideCast}>SIMILAR MOVIES</h2>
@@ -89,16 +110,12 @@ export async function getServerSideProps(ctx) {
     params: { movieId },
   } = ctx;
   try {
-    const [movie, credits, trailers] = await Promise.all([
-      axios.get(`http://localhost:3001/api/movie/${parseInt(movieId)}`),
-      axios.get(`http://localhost:3001/api/credits/${parseInt(movieId)}`),
-      axios.get(`http://localhost:3001/api/trailers/${parseInt(movieId)}`),
-    ]);
+    const { data } = await axios.get(
+      `http://localhost:3001/api/movie/${parseInt(movieId)}/include-all`
+    );
     return {
       props: {
-        movie: movie.data,
-        credits: credits.data,
-        trailers: trailers.data,
+        movie: data,
       },
     };
   } catch (error) {

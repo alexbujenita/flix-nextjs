@@ -13,7 +13,7 @@ export default function AddRemoveIcon({ movie }) {
       const favsArray = JSON.parse(favs);
       setIsFav(favsArray.includes(movie.id));
     }
-  }, []);
+  }, [movie.id]);
 
   async function addOrRemoveFav() {
     if (isFav) {
