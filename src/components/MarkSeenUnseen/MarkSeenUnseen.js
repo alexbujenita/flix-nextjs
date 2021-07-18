@@ -2,7 +2,7 @@ import axios from "axios";
 import styles from "./MarkSeenUnseen.module.scss";
 
 export default function MarkSeenUnseen(props) {
-  const { seen, setSeen, movie } = props;
+  const { seen, setSeen, movie, isFav } = props;
   const errorMessage = "There was an error, try again later.";
   const mark = (unseen) => async () => {
     try {
@@ -21,6 +21,9 @@ export default function MarkSeenUnseen(props) {
       alert(errorMessage);
     }
   };
+
+  if (!isFav) return null;
+
   return seen ? (
     <h2 className={styles.mark} onClick={mark(true)}>
       MARK AS UNSEEN

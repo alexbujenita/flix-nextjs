@@ -9,11 +9,13 @@ import MarkSeenUnseen from "../../components/MarkSeenUnseen/MarkSeenUnseen";
 import PersonCard from "../../components/PersonCard/PersonCard";
 import Trailers from "../../components/Trailers/Trailers";
 import styles from "./Movie.module.scss";
+import Rating from "../../components/Rating/Rating";
 
 export default function Movie(props) {
   const { movie } = props;
   const { credits, videos: trailers } = movie;
   const [isFav, setIsFav] = useState(false);
+  const [movieRating, setMovieRating] = useState(0);
   const [seen, setSeen] = useState(false);
   const [displayCast, setDisplayCast] = useState(false);
   const { poster_path, title, original_title, tagline, overview } = movie;
@@ -25,9 +27,9 @@ export default function Movie(props) {
         { withCredentials: true }
       );
       if (data) {
-        console.log(data);
         setIsFav(true);
         setSeen(data.seen);
+        setMovieRating(data.rating);
       }
     };
     isLogged() && getPossibleFav();
@@ -63,8 +65,19 @@ export default function Movie(props) {
           {overview ? <h3>{overview}</h3> : null}
         </div>
       </div>
+      <Rating
+        isFav={isFav}
+        movieRating={movieRating}
+        movie={movie}
+        setMovieRating={setMovieRating}
+      />
       <AddRemoveFav isFav={isFav} setIsFav={setIsFav} movie={movie} />
-      <MarkSeenUnseen seen={seen} setSeen={setSeen} movie={movie} />
+      <MarkSeenUnseen
+        isFav={isFav}
+        seen={seen}
+        setSeen={setSeen}
+        movie={movie}
+      />
       <Link href={`/movie/similar-movies/${movie.id}`}>
         <a>
           <h2 className={styles.showHideCast}>SIMILAR MOVIES</h2>
