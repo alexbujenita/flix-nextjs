@@ -33,11 +33,6 @@
   justify-content: space-evenly;
 }
 
-.watchedFilter > span:nth-child(odd) {
-  cursor: pointer;
-  user-select: none;
-}
-
 .active {
   color: $primary-colour-1;
   text-decoration: underline double;

@@ -1,25 +1,23 @@
 import axios from "axios";
 import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import BottomNav from "../../components/BottomNav/BottomNav";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import styles from "./userFavs.module.scss";
 
 export default function UserFavs(props) {
   const [inProgress, setInProgress] = useState(false);
-  const [active, setActive] = useState("none");
+  const { page, totalPages, rows } = props;
+  const { query } = useRouter();
 
-  function setFilter(action) {
-    if (action === active) {
-      setActive("none");
-    } else {
-      setActive(action);
-    }
+  if (!rows.length) {
+    return <h1>Nothing here...</h1>;
   }
 
-  function filterWatched(movie) {
-    if (active === "none") return true;
-    return active === "seen" ? movie.seen : !movie.seen;
-  }
+  const nextPage = page >= totalPages ? page : page + 1;
+  const prevPage = page <= 1 ? 1 : page - 1;
 
   async function downloadFavsAsPdf() {
     setInProgress(true);
@@ -59,26 +57,25 @@ export default function UserFavs(props) {
         )}
       </div>
       <div className={styles.watchedFilter}>
-        <span
-          className={active === "seen" ? styles.active : ""}
-          onClick={() => {
-            setFilter("seen");
-          }}
+        <Link
+          passHref
+          href={`/user-favs?page=1${query.seen === "true" ? "" : `&seen=true`}`}
         >
-          SEEN
-        </span>
-        <span>|</span>
-        <span
-          className={active === "unseen" ? styles.active : ""}
-          onClick={() => {
-            setFilter("unseen");
-          }}
+          <a className={query.seen === "true" ? styles.active : ""}>SEEN</a>
+        </Link>
+        <Link
+          passHref
+          href={`/user-favs?page=1${
+            query.seen === "false" ? "" : `&seen=false`
+          }`}
         >
-          UNSEEN
-        </span>
+          <a className={query.seen === "false" ? styles.active : ""}>
+            NOT SEEN
+          </a>
+        </Link>
       </div>
       <div className={styles.moviesContainer}>
-        {props.UserFavourites.filter(filterWatched).map((m) => (
+        {rows[0].UserFavourites.map((m) => (
           <MovieCard
             key={m.movieRefId}
             poster_path={m.moviePosterPath}
@@ -87,6 +84,14 @@ export default function UserFavs(props) {
           />
         ))}
       </div>
+      <BottomNav
+        prev={`/user-favs?page=${prevPage}${
+          query.seen ? `&seen=${query.seen}` : ""
+        }`}
+        next={`/user-favs?page=${nextPage}${
+          query.seen ? `&seen=${query.seen}` : ""
+        }`}
+      />
     </>
   );
 }
@@ -97,9 +102,12 @@ export async function getServerSideProps(ctx) {
       notFound: true,
     };
   }
+  const {
+    query: { page = 1, seen = "" },
+  } = ctx;
   try {
     const { data } = await axios.get(
-      "http://localhost:3001/api/favs/user-favs",
+      `http://localhost:3001/api/favs/user-favs?page=${page}&seen=${seen}`,
       {
         headers: {
           Cookie: ctx.req.headers.cookie || "",

@@ -27,19 +27,22 @@ export default function Login(props) {
         { withCredentials: true }
       );
       localStorage.setItem("LOGGED", firstName);
-      const {
-        data: { UserFavourites },
-      } = await axios.get("http://localhost:3001/api/favs/user-favs", {
-        withCredentials: true,
-      });
-      if (UserFavourites.length) {
-        const movieIds = UserFavourites.map((fav) => fav.movieRefId);
+      const { data } = await axios.get(
+        "http://localhost:3001/api/favs/user-favs?all=true",
+        {
+          withCredentials: true,
+        }
+      );
+      if (data.rows?.[0]?.UserFavourites.length) {
+        const movieIds = data.rows[0].UserFavourites.map(
+          (fav) => fav.movieRefId
+        );
         localStorage.setItem("UserFavs", JSON.stringify(movieIds));
       } else {
         localStorage.setItem("UserFavs", JSON.stringify([]));
       }
       router.push(localStorage.getItem("previousMovie") ?? "/movies");
-      localStorage.removeItem("previousMovie")
+      localStorage.removeItem("previousMovie");
     } catch (e) {
       console.log(e);
       localStorage.removeItem("LOGGED");
