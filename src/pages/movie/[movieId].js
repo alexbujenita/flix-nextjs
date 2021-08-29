@@ -13,7 +13,13 @@ import Rating from "../../components/Rating/Rating";
 
 export default function Movie(props) {
   const { movie } = props;
-  const { credits, videos: trailers } = movie;
+  const {
+    credits,
+    videos: trailers,
+    release_date = "",
+    imdb_id,
+    genres = [],
+  } = movie;
   const [isFav, setIsFav] = useState(false);
   const [movieRating, setMovieRating] = useState(0);
   const [seen, setSeen] = useState(false);
@@ -56,15 +62,33 @@ export default function Movie(props) {
           />
         ) : null}
         <div className={styles.movieIntro}>
-          <h1>{title || original_title}</h1>
+          <h1>
+            {title || original_title}
+            {release_date ? ` (${release_date.substring(0, 4)})` : null}
+          </h1>
           {tagline ? (
             <h2>
               <i>{tagline}</i>
             </h2>
           ) : null}
+          <h4>
+            Genres: {genres.map((genre) => genre.name).join(", ") || "N/A"}
+          </h4>
           {overview ? <h3>{overview}</h3> : null}
         </div>
       </div>
+      {imdb_id ? (
+        <div className={styles.links}>
+          <a
+            href={`https://www.imdb.com/title/${imdb_id}`}
+            target="_blank"
+            rel="noreferrer noopener nofollow"
+            className={styles.link}
+          >
+            IMDb
+          </a>
+        </div>
+      ) : null}
       <Rating
         isFav={isFav}
         movieRating={movieRating}
