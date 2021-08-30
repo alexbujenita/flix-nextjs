@@ -25,6 +25,16 @@
   }
 }
 
+.favSearch {
+  border: none;
+  border-bottom: $primary-colour-1 1px solid;
+
+  &:focus {
+    outline: none;
+    border-bottom: $green-1 1px solid;
+  }
+}
+
 .watchedFilter {
   display: flex;
   font-size: 20px;

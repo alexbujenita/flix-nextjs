@@ -41,6 +41,7 @@ export default function SearchBar() {
             onKeyDown={searchResults}
             onChange={setSearchHandler}
             value={search}
+            autoFocus
           />
           <div>
             <div>
