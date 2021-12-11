@@ -1,0 +1,13 @@
+.userList {
+  list-style-type: decimal;
+}
+
+.user {
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+
+  &:nth-child(odd) {
+    background-color: wheat;
+  }
+}
