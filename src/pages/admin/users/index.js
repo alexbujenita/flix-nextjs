@@ -8,7 +8,7 @@ export default function Admin({ count, rows }) {
       <h1>Found {count} users.</h1>
       <ul className={styles.userList}>
         {rows.map(({ id, firstName, lastName = "Missing Last-Name" }) => (
-          <Link href={`/admin/users/${id}`} key={id}>
+          <Link href={`/admin/users/${id}`} key={id} passHref>
             <li className={styles.user}>
               ID: {id}. {firstName} {lastName}
             </li>

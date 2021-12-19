@@ -20,6 +20,17 @@ export default function AdminUserInfo({ count, rows: [UserFavourites] }) {
     };
   }
 
+  const movieRefIdSet = new Set();
+
+  favs.forEach((fav) => {
+    if (movieRefIdSet.has(fav.movieRefId)) {
+      fav.isDuplicate = true;
+    }
+    movieRefIdSet.add(fav.movieRefId);
+  });
+
+  movieRefIdSet.clear();
+
   return (
     <div>
       <h2>
@@ -35,9 +46,12 @@ export default function AdminUserInfo({ count, rows: [UserFavourites] }) {
           </tr>
         </thead>
         <tbody>
-          {favs.map(({ id, movieRefId, movieTitle }) => {
+          {favs.map(({ id, movieRefId, movieTitle, isDuplicate }) => {
             return (
-              <tr key={id}>
+              <tr
+                key={id}
+                style={{ backgroundColor: isDuplicate ? "red" : "white" }}
+              >
                 <td>{id}</td>
                 <td>{movieRefId}</td>
                 <td>{movieTitle}</td>
