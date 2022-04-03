@@ -25,6 +25,10 @@ export default function SearchBar() {
     setSearch(value);
   };
 
+  const selectInput = (e) => {
+    e.target.select();
+  };
+
   return (
     <div
       className={display ? styles.searchContainerOpen : styles.searchContainer}
@@ -42,6 +46,7 @@ export default function SearchBar() {
             onChange={setSearchHandler}
             value={search}
             autoFocus
+            onFocus={selectInput}
           />
           <div>
             <div>

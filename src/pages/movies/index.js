@@ -14,6 +14,7 @@ export default function Movies({
     primaryReleaseDateGTE,
     certification,
     certificationCountry,
+    adult,
   },
 }) {
   const nextPageNumber = page >= 500 ? 500 : page + 1;
@@ -25,6 +26,7 @@ export default function Movies({
     primaryReleaseDateGTE,
     certification,
     certificationCountry,
+    adult,
   });
   const prevPage = buildQuery({
     page: prevPageNumber,
@@ -33,6 +35,7 @@ export default function Movies({
     primaryReleaseDateGTE,
     certification,
     certificationCountry,
+    adult,
   });
 
   return (
