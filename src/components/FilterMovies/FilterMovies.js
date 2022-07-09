@@ -68,7 +68,7 @@ export default function FilterMovies() {
   const YYYY_MM_DD = `${new Date().getFullYear()}-${
     new Date().getMonth() + 1
   }-${new Date().getDate()}`;
-  console.log(certifications);
+
   return (
     <div className={styles.filterContainer}>
       <span onClick={showHideFilters}>Filter Options</span>
