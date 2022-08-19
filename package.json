@@ -10,14 +10,14 @@
   "dependencies": {
     "axios": "^0.27.2",
     "js-cookie": "^3.0.1",
-    "next": "12.2.3",
+    "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "sass": "^1.54.0"
+    "sass": "^1.54.4"
   },
   "devDependencies": {
-    "eslint": "^8.20.0",
-    "eslint-config-next": "^12.2.3"
+    "eslint": "^8.22.0",
+    "eslint-config-next": "^12.2.5"
   }
 }
