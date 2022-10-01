@@ -20,8 +20,8 @@ function PersonCard({
         fromSearch ? styles.personContainerSearch : styles.personContainer
       }
     >
-      <Link href={`/actor/${id}`} passHref>
-        <div className={styles.personImageContainer}>
+      <div className={styles.personImageContainer}>
+        <Link href={`/actor/${id}`} passHref>
           <a>
             <Image
               src={
@@ -34,8 +34,8 @@ function PersonCard({
               height={height}
             />
           </a>
-        </div>
-      </Link>
+        </Link>
+      </div>
       <div className={styles.personNames}>
         <p>
           <b>{original_name || name}</b>

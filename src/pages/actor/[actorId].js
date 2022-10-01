@@ -6,6 +6,7 @@ import styles from "./Actor.module.scss";
 import { useState } from "react";
 
 export default function ActorInfo({ movies, actor }) {
+  console.log({actor})
   const [sorting, setSorting] = useState(0);
   function sortBy(e) {
     switch (e.target.id) {
@@ -50,6 +51,7 @@ export default function ActorInfo({ movies, actor }) {
           </div>
         ) : null}
         <div className={styles.actorInfo}>
+          <h3>{actor.name}</h3>
           <h4>{actor.biography}</h4>
         </div>
       </div>
