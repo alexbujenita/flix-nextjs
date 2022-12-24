@@ -13,22 +13,22 @@ export default function Home() {
         <h1>Welcome to My Flix.</h1>
         <h2>
           Start browsing{" "}
-          <Link href="/movies">
-            <a className={styles.homepageLink}>movies</a>
+          <Link className={styles.homepageLink} href="/movies">
+            movies
           </Link>{" "}
           right away.
         </h2>
         <h2>
           Or{" "}
-          <Link href="/register">
-            <a className={styles.homepageLink}>create</a>
+          <Link className={styles.homepageLink} href="/register">
+          create
           </Link>{" "}
           a free account to save a personal list of favourites.
         </h2>
         <h2>
           Have an account already?{" "}
-          <Link href="/login">
-            <a className={styles.homepageLink}>Log in!</a>
+          <Link className={styles.homepageLink} href="/login">
+            Log in!
           </Link>
         </h2>
       </main>

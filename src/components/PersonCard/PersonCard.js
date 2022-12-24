@@ -22,7 +22,6 @@ function PersonCard({
     >
       <div className={styles.personImageContainer}>
         <Link href={`/actor/${id}`} passHref>
-          <a>
             <Image
               src={
                 profile_path
@@ -33,7 +32,6 @@ function PersonCard({
               width={width}
               height={height}
             />
-          </a>
         </Link>
       </div>
       <div className={styles.personNames}>

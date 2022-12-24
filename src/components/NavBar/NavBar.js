@@ -16,20 +16,14 @@ export default function NavBar() {
   return (
     <div className={styles.navBarContainer}>
       <Link href="/movies">
-        <a>
           <h3>Movies</h3>
-        </a>
       </Link>
       <Link href="/random-movies">
-        <a>
           <h3>RaNDom</h3>
-        </a>
       </Link>
       {logged && (
         <Link href="/user-favs">
-          <a>
             <h3>FAVS</h3>
-          </a>
         </Link>
       )}
       <SearchBar />

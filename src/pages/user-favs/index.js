@@ -73,8 +73,9 @@ export default function UserFavs(props) {
         <Link
           passHref
           href={`/user-favs?page=1${query.seen === "true" ? "" : `&seen=true`}`}
+          className={query.seen === "true" ? styles.active : ""}
         >
-          <a className={query.seen === "true" ? styles.active : ""}>SEEN</a>
+          SEEN
         </Link>
         <input
           className={styles.favSearch}
@@ -89,10 +90,9 @@ export default function UserFavs(props) {
           href={`/user-favs?page=1${
             query.seen === "false" ? "" : `&seen=false`
           }`}
+          className={query.seen === "false" ? styles.active : ""}
         >
-          <a className={query.seen === "false" ? styles.active : ""}>
-            NOT SEEN
-          </a>
+          NOT SEEN
         </Link>
       </div>
       <div className={styles.moviesContainer}>

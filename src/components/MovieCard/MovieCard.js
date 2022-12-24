@@ -10,7 +10,6 @@ export default function MovieCard(props) {
     <div className={styles.movieCard}>
       <AddRemoveIcon movie={props} />
       <Link href={`/movie/${id}`}>
-        <a>
           <div className={styles.movieCardImage}>
             <Image
               src={
@@ -23,7 +22,6 @@ export default function MovieCard(props) {
               height={513}
             />
           </div>
-        </a>
       </Link>
       <p className={styles.movieTitle}>{title}</p>
       {release_date && (
