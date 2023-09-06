@@ -14,7 +14,10 @@
 }
 
 .downloadText {
-  cursor: pointer;
+  h1 {
+    cursor: pointer;
+    margin: 5px 0px;
+  }
   margin: 0 0 20px 0;
   border-radius: 5px;
   padding: 10px 120px;

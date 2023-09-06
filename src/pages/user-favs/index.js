@@ -9,6 +9,7 @@ import styles from "./userFavs.module.scss";
 
 export default function UserFavs(props) {
   const [inProgress, setInProgress] = useState(false);
+  const [includeCast, setIncludeCast] = useState(false);
   const [searchFav, setSearchFav] = useState("");
   const { page, totalPages, rows } = props;
   const router = useRouter();
@@ -34,10 +35,13 @@ export default function UserFavs(props) {
 
   async function downloadFavsAsPdf() {
     setInProgress(true);
-    const { data } = await axios.get("http://localhost:3001/api/favs/pdf", {
-      withCredentials: true,
-      responseType: "blob",
-    });
+    const { data } = await axios.get(
+      `http://localhost:3001/api/favs/pdf?includeCast=${includeCast}`,
+      {
+        withCredentials: true,
+        responseType: "blob",
+      }
+    );
     const url = URL.createObjectURL(new Blob([data]));
     const link = document.createElement("a");
     link.href = url;
@@ -64,9 +68,17 @@ export default function UserFavs(props) {
             <h3>Usually a minute for 50 movies.</h3>
           </>
         ) : (
-          <h1 onClick={downloadFavsAsPdf} className={styles.downloadText}>
-            Download your favourites as PDF
-          </h1>
+          <div className={styles.downloadText}>
+            <div>
+              <label>Include cast?</label>
+              <input
+                type="checkbox"
+                checked={includeCast}
+                onChange={() => setIncludeCast(!includeCast)}
+              />
+            </div>
+            <h1 onClick={downloadFavsAsPdf}>Download your favourites as PDF</h1>
+          </div>
         )}
       </div>
       <div className={styles.watchedFilter}>
