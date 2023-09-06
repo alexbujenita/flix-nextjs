@@ -6,7 +6,7 @@ MyFlix is a NextJS app to discover and organize films.
 
 First you need the [backend](https://github.com/alexbujenita/flix-node-back)
 
-Make sure you have NodeJS > 10 installed, (tested on v14).
+Make sure you have NodeJS > 16 installed, (tested on v18).
 
 Clone the repo and install the dependencies:
 

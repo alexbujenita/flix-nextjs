@@ -4,7 +4,7 @@ import Head from "next/head";
 import styles from "./Movies.module.scss";
 import BottomNav from "../../components/BottomNav/BottomNav";
 import FilterMovies from "../../components/FilterMovies/FilterMovies";
-import { buildQuery } from "./buildQuery";
+import { buildQuery } from "../../lib/buildQuery";
 
 export default function Movies({
   data: { page, results },

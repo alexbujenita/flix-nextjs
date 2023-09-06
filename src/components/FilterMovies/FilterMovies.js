@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { buildQuery } from "../../pages/movies/buildQuery";
+import { buildQuery } from "../../lib/buildQuery";
 import styles from "./FilterMovies.module.scss";
 
 export default function FilterMovies() {
