@@ -65,9 +65,8 @@ export default function FilterMovies() {
     return years;
   }
 
-  const YYYY_MM_DD = `${new Date().getFullYear()}-${
-    new Date().getMonth() + 1
-  }-${new Date().getDate()}`;
+  const YYYY_MM_DD = `${new Date().getFullYear()}-${new Date().getMonth() + 1
+    }-${new Date().getDate()}`;
 
   return (
     <div className={styles.filterContainer}>
@@ -124,11 +123,13 @@ export default function FilterMovies() {
               }}
             >
               <option disabled>Choose a country</option>
-              {Object.keys(certifications).map((countryCode) => (
-                <option key={countryCode} value={countryCode}>
-                  {countryCode}
-                </option>
-              ))}
+              {Object.keys(certifications)
+                .sort((a, b) => a.localeCompare(b))
+                .map((countryCode) => (
+                  <option key={countryCode} value={countryCode}>
+                    {countryCode}
+                  </option>
+                ))}
             </select>
           </div>
           {certificationCountry && (
