@@ -2,6 +2,16 @@
   list-style-type: decimal;
 }
 
+.userMovieLink {
+  color: limegreen;
+}
+
+.delete {
+  color: red;
+  font-weight: 700;
+  cursor: crosshair;
+}
+
 .user {
   text-align: center;
   padding: 10px 0;

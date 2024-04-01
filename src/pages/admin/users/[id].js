@@ -1,5 +1,7 @@
 import axios from "axios";
-// import styles from "../admin.module.scss"; TODO!!!
+import Link from "next/link";
+import styles from "../admin.module.scss";
+
 export default function AdminUserInfo({ count, rows: [UserFavourites] }) {
   const favs = UserFavourites.UserFavourites;
 
@@ -33,7 +35,7 @@ export default function AdminUserInfo({ count, rows: [UserFavourites] }) {
 
   return (
     <div>
-      <h2>
+      <h2 className={styles.user}>
         User ID: {UserFavourites.id}. {UserFavourites.firstName}{" "}
         {UserFavourites.lastName} has {count} favs.
       </h2>
@@ -53,9 +55,13 @@ export default function AdminUserInfo({ count, rows: [UserFavourites] }) {
                 style={{ backgroundColor: isDuplicate ? "red" : "white" }}
               >
                 <td>{id}</td>
-                <td>{movieRefId}</td>
+                <td>
+                  <Link href={`/movie/${movieRefId}`} passHref className={styles.userMovieLink}>
+                    {movieRefId}
+                  </Link>
+                </td>
                 <td>{movieTitle}</td>
-                <td onClick={deleteFav(id)}>DELETE</td>
+                <td onClick={deleteFav(id)} className={styles.delete}>DELETE</td>
               </tr>
             );
           })}
