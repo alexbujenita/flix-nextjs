@@ -18,6 +18,9 @@ export default function NavBar() {
       <Link href="/movies">
           <h3>Movies</h3>
       </Link>
+      <Link href="/tv">
+          <h3>TV</h3>
+      </Link>
       <Link href="/random-movies">
           <h3>RaNDom</h3>
       </Link>
