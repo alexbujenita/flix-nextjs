@@ -1,7 +1,7 @@
 import axios from "axios";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Head from "next/head";
-import styles from "./Movies.module.scss";
+import styles from "../../styles/CardContainer.module.scss";
 import BottomNav from "../../components/BottomNav/BottomNav";
 import FilterMovies from "../../components/FilterMovies/FilterMovies";
 import { buildQuery } from "../../lib/buildQuery";
@@ -45,7 +45,7 @@ export default function Movies({
         <meta name="description" content="Movies sorted by popularity." />
       </Head>
       <FilterMovies />
-      <div className={styles.moviesContainer}>
+      <div className={styles.cardContainer}>
         {results.map((movie) => {
           return <MovieCard key={movie.id} {...movie} />;
         })}
