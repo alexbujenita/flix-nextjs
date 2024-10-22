@@ -1,5 +1,5 @@
 import axios from "axios";
-import MovieCard from "../../../components/MovieCard/MovieCard";
+import Card from "../../../components/Card/Card";
 import styles from "./SimilarMovies.module.scss";
 import Head from "next/head";
 import BottomNav from "../../../components/BottomNav/BottomNav";
@@ -18,7 +18,7 @@ export default function SimilarMovies({ data, currentMovieId }) {
       </Head>
       <div className={styles.moviesContainer}>
         {results.map((m) => (
-          <MovieCard key={m.id} {...m} />
+          <Card key={m.id} {...m} />
         ))}
       </div>
       {showNav ? (

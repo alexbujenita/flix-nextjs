@@ -1,9 +1,10 @@
 import axios from "axios";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import Card from "../../components/Card/Card";
 import Image from "next/image";
 import Head from "next/head";
 import styles from "./Actor.module.scss";
 import { useState } from "react";
+import { CONTENT_TYPE } from "../../utils/constants";
 
 export default function ActorInfo({ movies, actor }) {
   const [sorting, setSorting] = useState(0);
@@ -68,7 +69,7 @@ export default function ActorInfo({ movies, actor }) {
       </div>
       <div className={styles.actorMovieContainer}>
         {movies.map((movie) => (
-          <MovieCard key={movie.id} {...movie} />
+          <Card key={movie.id} {...movie} contentType={CONTENT_TYPE.MOVIE} />
         ))}
       </div>
     </>

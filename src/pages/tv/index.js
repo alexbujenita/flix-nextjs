@@ -2,8 +2,9 @@ import axios from "axios";
 import Head from "next/head";
 import { buildQuery } from "../../lib/buildQuery";
 import BottomNav from "../../components/BottomNav/BottomNav";
-import TvSeriesCard from "../../components/TvSeriesCard/TvSeriesCard";
+import Card from "../../components/Card/Card";
 import styles from "../../styles/CardContainer.module.scss";
+import { CONTENT_TYPE } from "../../utils/constants";
 
 export default function Tv({
   data: { page, results },
@@ -35,7 +36,7 @@ export default function Tv({
       </Head>
       <div className={styles.cardContainer}>
         {results.map((tvSeries) => {
-          return <TvSeriesCard key={tvSeries.id} {...tvSeries} />;
+          return <Card key={tvSeries.id} {...tvSeries} contentType={CONTENT_TYPE.TV_SERIES} />;
         })}
       </div>
       <BottomNav prev={prevPage} next={nextPage} />
