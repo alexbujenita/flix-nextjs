@@ -61,8 +61,8 @@ function getCardLink(props) {
     case CONTENT_TYPE.TV_SERIES:
       return `/tv/series/${id}`;
     case CONTENT_TYPE.TV_SERIES_SEASON:
-      const {season_number} = props;
-      return `/tv/series/${id}/season/${season_number}`;
+      const {season_number, seriesId} = props;
+      return `/tv/series/${seriesId}/season/${season_number}`;
     default:
       return `/movie/${id}`;
   }

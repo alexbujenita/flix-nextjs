@@ -1,9 +1,9 @@
 import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../TV.module.scss";
-import Card from "../../../components/Card/Card";
-import { CONTENT_TYPE } from "../../../utils/constants";
+import styles from "../../TV.module.scss";
+import Card from "../../../../components/Card/Card";
+import { CONTENT_TYPE } from "../../../../utils/constants";
 
 export default function Series({ tvSeries }) {
   const {
@@ -16,6 +16,7 @@ export default function Series({ tvSeries }) {
     number_of_seasons,
     seasons,
     overview,
+    id,
   } = tvSeries;
 
   const hasSeasons = seasons && seasons.length > 0;
@@ -73,6 +74,7 @@ export default function Series({ tvSeries }) {
               key={season.id}
               {...season}
               contentType={CONTENT_TYPE.TV_SERIES_SEASON}
+              seriesId={id}
             />
           ))}
         </div>
