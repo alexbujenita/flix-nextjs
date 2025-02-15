@@ -1,10 +1,11 @@
 import axios from "axios";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import Card from "../../components/Card/Card";
 import Head from "next/head";
 import styles from "../../styles/CardContainer.module.scss";
 import BottomNav from "../../components/BottomNav/BottomNav";
 import FilterMovies from "../../components/FilterMovies/FilterMovies";
 import { buildQuery } from "../../lib/buildQuery";
+import { CONTENT_TYPE } from "../../utils/constants";
 
 export default function Movies({
   data: { page, results },
@@ -47,7 +48,7 @@ export default function Movies({
       <FilterMovies />
       <div className={styles.cardContainer}>
         {results.map((movie) => {
-          return <MovieCard key={movie.id} {...movie} />;
+          return <Card key={movie.id} {...movie} contentType={CONTENT_TYPE.MOVIE} />;
         })}
       </div>
       <BottomNav prev={prevPage} next={nextPage} />

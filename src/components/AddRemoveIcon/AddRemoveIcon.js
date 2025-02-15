@@ -2,8 +2,19 @@ import styles from "./AddRemoveIcon.module.scss";
 import { useEffect, useState } from "react";
 import isLogged from "../../utils/isLogged";
 import { addMovieToFavs, removeMovieFromFavs } from "./utils";
+import { CONTENT_TYPE } from "../../utils/constants";
 
-export default function AddRemoveIcon({ movie }) {
+/**
+ * AddRemoveIcon component is used to add or remove a movie from the user's favorites list.
+ * @param {Object} movie - The movie object that will be added or removed from the user's favorites list.
+ * @param {boolean} isTvSeries - A boolean value to check if the movie is a tv series. If it is a tv series, the AddRemoveIcon component will not be rendered.
+ * @returns {JSX.Element} - Returns the AddRemoveIcon component.
+ * @example
+ * <AddRemoveIcon movie={movie} />
+ */
+export default function AddRemoveIcon({ movie, contentType }) {
+  if (contentType !== CONTENT_TYPE.MOVIE) return null;
+
   const [isFav, setIsFav] = useState(false);
   const [isUserLogged, setIsUserLogged] = useState(false);
   useEffect(() => {

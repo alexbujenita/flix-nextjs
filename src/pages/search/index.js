@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import axios from "axios";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import Card from "../../components/Card/Card";
 import styles from "./Search.module.scss";
 import Head from "next/head";
 import BottomNav from "../../components/BottomNav/BottomNav";
@@ -22,7 +22,7 @@ export default function Search({ data, searchOpt }) {
       </Head>
       <div className={styles.moviesContainer}>
         {entity === "movie"
-          ? data.results.map((entry) => <MovieCard key={entry.id} {...entry} />)
+          ? data.results.map((entry) => <Card key={entry.id} {...entry} />)
           : data.results.map((entry) => (
               <PersonCard key={entry.id} {...entry} fromSearch />
             ))}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import Head from "next/head";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import Card from "../../components/Card/Card";
 import { useState } from "react";
 import styles from "./RandomMovies.module.scss";
 
@@ -32,7 +32,7 @@ export default function RandomMovies({ data }) {
         </button>
         <div className={styles.moviesContainer}>
           {movies.map((movie) => {
-            return <MovieCard key={movie.id} {...movie} />;
+            return <Card key={movie.id} {...movie} />;
           })}
         </div>
       </div>

@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import BottomNav from "../../components/BottomNav/BottomNav";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import Card from "../../components/Card/Card";
 import styles from "./userFavs.module.scss";
+import { CONTENT_TYPE } from "../../utils/constants";
 
 export default function UserFavs(props) {
   const [inProgress, setInProgress] = useState(false);
@@ -109,11 +110,12 @@ export default function UserFavs(props) {
       </div>
       <div className={styles.moviesContainer}>
         {rows[0].UserFavourites.map((m) => (
-          <MovieCard
+          <Card
             key={m.movieRefId}
             poster_path={m.moviePosterPath}
             title={m.movieTitle}
             id={m.movieRefId}
+            contentType={CONTENT_TYPE.MOVIE}
           />
         ))}
       </div>
