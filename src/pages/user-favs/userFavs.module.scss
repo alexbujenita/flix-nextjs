@@ -1,4 +1,4 @@
-@import "src/themes/_typography.scss";
+@use "src/themes/_typography.scss" as typography;
 
 .moviesContainer {
   display: flex;
@@ -30,11 +30,11 @@
 
 .favSearch {
   border: none;
-  border-bottom: $primary-colour-1 1px solid;
+  border-bottom: typography.$primary-colour-1 1px solid;
 
   &:focus {
     outline: none;
-    border-bottom: $green-1 1px solid;
+    border-bottom: typography.$green-1 1px solid;
   }
 }
 
@@ -42,11 +42,11 @@
   display: flex;
   font-size: 20px;
   padding-bottom: 15px;
-  color: $primary-colour-2;
+  color: typography.$primary-colour-2;
   justify-content: space-evenly;
 }
 
 .active {
-  color: $primary-colour-1;
+  color: typography.$primary-colour-1;
   text-decoration: underline double;
 }

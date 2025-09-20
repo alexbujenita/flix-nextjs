@@ -5,3 +5,9 @@ export const CONTENT_TYPE = Object.freeze({
     TV_SERIES_SEASON: "tv-season",
     TV_SERIES_EPISODE: "tv-episode",
 });
+
+export const ENTITIES = Object.freeze({
+    MOVIE: "movie",
+    TV: "tv",
+    PERSON: "person",
+});

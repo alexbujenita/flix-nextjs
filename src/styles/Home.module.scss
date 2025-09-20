@@ -1,7 +1,7 @@
-@import "src/themes/_typography.scss";
+@use "src/themes/_typography.scss" as typography;
 
 .homepageLink {
-  color: $link-colour-1;
+  color: typography.$link-colour-1;
 }
 
 .main {

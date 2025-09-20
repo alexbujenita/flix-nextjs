@@ -1,4 +1,4 @@
-@import "src/themes/_typography.scss";
+@use "src/themes/_typography.scss" as typography;
 
 .trailersContainer {
   display: flex;
@@ -9,7 +9,7 @@
 .showHideTrailers {
   text-align: center;
   cursor: pointer;
-  color: $primary-colour-2;
+  color: typography.$primary-colour-2;
   animation: text-focus-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 

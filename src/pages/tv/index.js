@@ -10,7 +10,6 @@ export default function Tv({
   data: { page, results },
   filterOptions: { year, adult },
 }) {
-  console.log({ page, results, year, adult });
 
   const nextPageNumber = page >= 500 ? 500 : page + 1;
   const prevPageNumber = page <= 1 ? 1 : page - 1;
@@ -53,7 +52,7 @@ export async function getServerSideProps(ctx) {
     adult,
   };
   const finalQuery = buildQuery(params, true);
-  console.log({ finalQuery });
+
   try {
     const { data } = await axios.get(`http://localhost:3001/api${finalQuery}`, {
       withCredentials: true,
