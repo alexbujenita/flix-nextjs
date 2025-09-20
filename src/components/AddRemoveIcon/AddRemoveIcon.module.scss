@@ -1,10 +1,10 @@
-@import "src/themes/_typography.scss";
+@use "src/themes/_typography.scss" as typography;
 
 .addIcon {
   display: inline-flex;
   -moz-box-pack: end;
   z-index: 50;
-  color: $primary-colour-3;
+  color: typography.$primary-colour-3;
   position: absolute;
   border-radius: 100%;
   bottom: 80px;
@@ -13,7 +13,7 @@
   height: 50px;
   justify-content: center;
   align-items: center;
-  background-color: $primary-colour-3;
+  background-color: typography.$primary-colour-3;
   opacity: 0.75;
   filter: grayscale(40%);
   &:hover {
@@ -33,9 +33,9 @@
 }
 
 .iconPlusSign {
-  color: $green-1;
+  color: typography.$green-1;
 }
 
 .iconMinusSign {
-  color: $red-1;
+  color: typography.$red-1;
 }

@@ -26,7 +26,6 @@ export default function Series({ tvSeries }) {
 
   const title = name ?? original_name;
 
-  console.log({ tvSeries, styles });
   return (
     <>
       <Head>

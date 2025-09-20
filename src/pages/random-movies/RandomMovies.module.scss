@@ -1,4 +1,4 @@
-@import "src/themes/_typography.scss";
+@use "src/themes/_typography.scss" as typography;
 
 .moviesContainer {
   display: flex;
@@ -7,7 +7,7 @@
 }
 
 .moviesNavigation {
-  color: $primary-colour-2;
+  color: typography.$primary-colour-2;
   display: flex;
   justify-content: space-around;
 }

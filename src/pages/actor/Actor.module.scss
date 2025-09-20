@@ -1,4 +1,4 @@
-@import "src/themes/_typography.scss";
+@use "src/themes/_typography.scss" as typography;
 
 .infoContainer {
   display: flex;
@@ -15,7 +15,7 @@
 .imageContainer {
   margin: 0 60px;
   border-radius: 5%;
-  box-shadow: 3px 0 5px 4px $box-shadow-1;
+  box-shadow: 3px 0 5px 4px typography.$box-shadow-1;
 }
 
 .imageContainer div {
@@ -45,5 +45,5 @@
 
 .sortOptions h1:not(:first-child) {
   cursor: pointer;
-  color: $primary-colour-2;
+  color: typography.$primary-colour-2;
 }

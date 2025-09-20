@@ -1,7 +1,7 @@
-@import "src/themes/_typography.scss";
+@use "src/themes/_typography.scss" as typography;
 
 .intro {
-  color: $primary-colour-1;
+  color: typography.$primary-colour-1;
   display: flex;
   justify-content: flex-end;
   flex-wrap: nowrap;

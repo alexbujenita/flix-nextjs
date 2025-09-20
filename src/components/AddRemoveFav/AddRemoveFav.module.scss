@@ -1,7 +1,7 @@
-@import "src/themes/_typography.scss";
+@use "src/themes/_typography.scss" as typography;
 
 .addRemove {
   text-align: center;
   cursor: pointer;
-  color: $primary-colour-2;
+  color: typography.$primary-colour-2;
 }

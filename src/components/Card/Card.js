@@ -16,8 +16,6 @@ import { CONTENT_TYPE } from "../../utils/constants";
 export default function Card(props) {
   const { poster_path, release_date, contentType } = props;
 
-  console.log({ props, inCard: true });
-
   const link = getCardLink(props);
   const title = getTitle(props);
 

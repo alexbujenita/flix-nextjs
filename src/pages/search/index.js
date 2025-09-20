@@ -5,6 +5,7 @@ import styles from "./Search.module.scss";
 import Head from "next/head";
 import BottomNav from "../../components/BottomNav/BottomNav";
 import PersonCard from "../../components/PersonCard/PersonCard";
+import { ENTITIES } from "../../utils/constants";
 
 export default function Search({ data, searchOpt }) {
   const { page, normalizedSearch, includeAdult, entity } = searchOpt;
@@ -21,10 +22,12 @@ export default function Search({ data, searchOpt }) {
         <meta name="description" content="Showing the search results." />
       </Head>
       <div className={styles.moviesContainer}>
-        {entity === "movie"
-          ? data.results.map((entry) => <Card key={entry.id} {...entry} />)
-          : data.results.map((entry) => (
+        {entity === ENTITIES.PERSON
+          ? data.results.map((entry) => (
               <PersonCard key={entry.id} {...entry} fromSearch />
+            ))
+          : data.results.map((entry) => (
+              <Card key={entry.id} {...entry} contentType={entity} />
             ))}
       </div>
       {showNav ? (

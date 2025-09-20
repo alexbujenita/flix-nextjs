@@ -13,10 +13,9 @@ import { CONTENT_TYPE } from "../../utils/constants";
  * <AddRemoveIcon movie={movie} />
  */
 export default function AddRemoveIcon({ movie, contentType }) {
-  if (contentType !== CONTENT_TYPE.MOVIE) return null;
-
   const [isFav, setIsFav] = useState(false);
   const [isUserLogged, setIsUserLogged] = useState(false);
+  
   useEffect(() => {
     const favs = localStorage.getItem("UserFavs");
     setIsUserLogged(isLogged());
@@ -25,6 +24,8 @@ export default function AddRemoveIcon({ movie, contentType }) {
       setIsFav(favsArray.includes(movie.id));
     }
   }, [movie.id]);
+
+  if (contentType !== CONTENT_TYPE.MOVIE) return null;
 
   async function addOrRemoveFav() {
     if (isFav) {
