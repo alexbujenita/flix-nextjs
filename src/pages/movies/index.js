@@ -42,7 +42,7 @@ export default function Movies({
   return (
     <>
       <Head>
-        <title>Movies | Page {page}</title>
+        <title>{`Movies | Page ${page ?? 1}`}</title>
         <meta name="description" content="Movies sorted by popularity." />
       </Head>
       <FilterMovies />

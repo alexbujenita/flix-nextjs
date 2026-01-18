@@ -30,7 +30,7 @@ export default function Tv({
   return (
     <>
       <Head>
-        <title>TV | Page {page}</title>
+        <title>{`TV | Page ${page ?? 1}`}</title>
         <meta name="description" content="Tv series sorted by popularity." />
       </Head>
       <div className={styles.cardContainer}>
