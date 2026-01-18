@@ -1,4 +1,4 @@
-@use "src/themes/_typography.scss" as *;
+@use "../themes/typography" as typography;
 
 .movieCard {
   text-align: center;
@@ -13,7 +13,7 @@
 
 .movieCardImage {
   border-radius: 5px;
-  box-shadow: 3px 3px 5px 6px $box-shadow-1;
+  box-shadow: 3px 3px 5px 6px typography.$box-shadow-1;
 }
 
 .releaseYear {
