@@ -30,14 +30,14 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^10",
-    "@testing-library/jest-dom": "^6",
+    "@testing-library/jest-dom": "^7",
     "@testing-library/react": "^16.3",
     "@testing-library/user-event": "^14",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@vitejs/plugin-react": "^5",
-    "@vitest/coverage-v8": "^4",
+    "@vitejs/plugin-react": "^6",
+    "@vitest/coverage-v8": "^5",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.3.5",
     "jsdom": "^30",
@@ -45,6 +45,7 @@
     "next-router-mock": "^1",
     "prettier": "^3.9.8",
     "typescript": "^5.9.3",
-    "vitest": "^4.1"
+    "vite": "^8",
+    "vitest": "^5"
   }
 }
