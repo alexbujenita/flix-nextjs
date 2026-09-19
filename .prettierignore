@@ -1,0 +1,4 @@
+.omo/
+.next/
+coverage/
+yarn.lock
