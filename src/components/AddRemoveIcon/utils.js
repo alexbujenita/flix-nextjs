@@ -1,4 +1,6 @@
 import axios from "axios";
+import { getUserFavs, setUserFavs } from "../../utils/userFavs";
+
 /**
  * Adds the movie to the DB as the current user's fav
  * @param {Number} movieId
@@ -16,9 +18,7 @@ export async function addMovieToFavs(movieId, movieTitle, moviePosterPath) {
       },
       { withCredentials: true },
     );
-    const favs = JSON.parse(localStorage.getItem("UserFavs"));
-    favs.push(movieId);
-    localStorage.setItem("UserFavs", JSON.stringify(favs));
+    setUserFavs([...getUserFavs(), movieId]);
   } catch (error) {
     console.log(error);
     alert("Try again later...");
@@ -34,10 +34,7 @@ export async function removeMovieFromFavs(movieId) {
     await axios.delete(`http://localhost:3001/api/favs/${movieId}`, {
       withCredentials: true,
     });
-    const favs = JSON.parse(localStorage.getItem("UserFavs")).filter(
-      (id) => id !== movieId,
-    );
-    localStorage.setItem("UserFavs", JSON.stringify(favs));
+    setUserFavs(getUserFavs().filter((id) => id !== movieId));
   } catch (error) {
     console.log(error);
     alert("Try again later...");

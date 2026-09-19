@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
 import styles from "./LogInOut.module.scss";
+import { setUserFavs } from "../../utils/userFavs";
 
 export default function LogInOut({ name }) {
   const router = useRouter();
@@ -11,7 +12,7 @@ export default function LogInOut({ name }) {
         withCredentials: true,
       });
       localStorage.clear("LOGGED");
-      localStorage.clear("UserFavs");
+      setUserFavs([]);
       router.push("/movies");
     } catch (error) {
       console.log(error);

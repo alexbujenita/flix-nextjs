@@ -3,6 +3,7 @@ import Head from "next/head";
 import axios from "axios";
 import { useRouter } from "next/router";
 import styles from "./Login.module.scss";
+import { setUserFavs } from "../../utils/userFavs";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -37,9 +38,9 @@ export default function Login() {
         const movieIds = data.rows[0].UserFavourites.map(
           (fav) => fav.movieRefId,
         );
-        localStorage.setItem("UserFavs", JSON.stringify(movieIds));
+        setUserFavs(movieIds);
       } else {
-        localStorage.setItem("UserFavs", JSON.stringify([]));
+        setUserFavs([]);
       }
       router.push(localStorage.getItem("previousMovie") ?? "/movies");
       localStorage.removeItem("previousMovie");
