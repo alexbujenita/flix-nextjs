@@ -294,4 +294,21 @@ describe("SearchBar", () => {
       expect(currentRoute(capture).asPath).toBe("/");
     });
   });
+
+  describe("entity icon default fallback", () => {
+    it("renders the default movie icon through the cycle", async () => {
+      // Given: a mounted search bar.
+      const user = userEvent.setup();
+      renderSearchBar();
+      await user.click(heading());
+
+      // When: the entity toggle cycles through tv and person and back.
+      await user.click(entityToggle());
+      await user.click(entityToggle());
+      await user.click(entityToggle());
+
+      // Then: the movie icon is present, exercising getEntityIcon's default case.
+      expect(entityToggle()).toHaveTextContent("🎬");
+    });
+  });
 });

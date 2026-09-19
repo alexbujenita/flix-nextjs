@@ -99,6 +99,50 @@ describe("user favourites page rendered from getServerSideProps", () => {
     );
   });
 
+  it("clamps both pagination links on a single page of favourites", async () => {
+    useFavoritesResponse(populatedFavorites({ page: 1, totalPages: 1 }));
+
+    await renderFromServerProps({
+      query: { page: "1" },
+      url: "/user-favs?page=1",
+    });
+
+    expect(screen.getByRole("link", { name: "PREV" })).toHaveAttribute(
+      "href",
+      "/user-favs?page=1",
+    );
+    expect(screen.getByRole("link", { name: "NEXT" })).toHaveAttribute(
+      "href",
+      "/user-favs?page=1",
+    );
+  });
+
+  it("clears the not-seen filter from its own link when it is already active", async () => {
+    useFavoritesResponse(populatedFavorites());
+
+    await renderFromServerProps({
+      query: { page: "2", seen: "false" },
+      url: "/user-favs?page=2&seen=false",
+    });
+
+    expect(screen.getByRole("link", { name: "NOT SEEN" })).toHaveAttribute(
+      "href",
+      "/user-favs?page=1",
+    );
+    expect(screen.getByRole("link", { name: "SEEN" })).toHaveAttribute(
+      "href",
+      "/user-favs?page=1&seen=true",
+    );
+    expect(screen.getByRole("link", { name: "PREV" })).toHaveAttribute(
+      "href",
+      "/user-favs?page=1&seen=false",
+    );
+    expect(screen.getByRole("link", { name: "NEXT" })).toHaveAttribute(
+      "href",
+      "/user-favs?page=3&seen=false",
+    );
+  });
+
   it("submits a favourites search on Enter", async () => {
     const user = userEvent.setup();
     const pushSpy = vi.spyOn(mockRouter, "push");

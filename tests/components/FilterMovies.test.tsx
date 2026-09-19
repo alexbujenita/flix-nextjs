@@ -316,6 +316,32 @@ describe("FilterMovies", () => {
     });
   });
 
+  describe("certifications data", () => {
+    it("populates and sorts country codes from the certifications response", async () => {
+      // Given: a mounted filter panel with certifications loaded.
+      const user = userEvent.setup();
+      renderFilterMovies();
+
+      // When: the filter form is opened and certifications load.
+      await openFilters(user);
+      await waitForCertifications();
+
+      // Then: the country select contains sorted country codes (triggering the .sort() line).
+      const countries = selectWithPlaceholder("Choose a country");
+      const options = within(countries)
+        .getAllByRole("option")
+        .slice(1) // skip the disabled placeholder
+        .map((opt) => opt.textContent);
+
+      // Verify the sort was applied by checking they're in order.
+      for (let i = 1; i < options.length; i++) {
+        expect(
+          options[i]!.localeCompare(options[i - 1]!),
+        ).toBeGreaterThanOrEqual(0);
+      }
+    });
+  });
+
   describe("when the certifications request fails", () => {
     it("still renders the form, logs the error and omits the certification select", async () => {
       // Given: the certifications endpoint returns 500.
