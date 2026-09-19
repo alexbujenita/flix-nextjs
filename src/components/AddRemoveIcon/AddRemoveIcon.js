@@ -1,9 +1,9 @@
 import styles from "./AddRemoveIcon.module.scss";
 import { useSyncExternalStore } from "react";
-import isLogged from "../../utils/isLogged";
 import { addMovieToFavs, removeMovieFromFavs } from "./utils";
 import { CONTENT_TYPE } from "../../utils/constants";
 import { parseUserFavs, USER_FAVS_UPDATED_EVENT } from "../../utils/userFavs";
+import useLoginState from "../../utils/useLoginState";
 
 function subscribeToUserFavs(onStoreChange) {
   window.addEventListener("storage", onStoreChange);
@@ -23,18 +23,6 @@ function getServerUserFavsSnapshot() {
   return null;
 }
 
-function subscribeToLoginState(onStoreChange) {
-  window.addEventListener("focus", onStoreChange);
-
-  return () => {
-    window.removeEventListener("focus", onStoreChange);
-  };
-}
-
-function getServerLoginState() {
-  return false;
-}
-
 /**
  * AddRemoveIcon component is used to add or remove a movie from the user's favorites list.
  * @param {Object} movie - The movie object that will be added or removed from the user's favorites list.
@@ -49,11 +37,7 @@ export default function AddRemoveIcon({ movie, contentType }) {
     getUserFavsSnapshot,
     getServerUserFavsSnapshot,
   );
-  const isUserLogged = useSyncExternalStore(
-    subscribeToLoginState,
-    isLogged,
-    getServerLoginState,
-  );
+  const isUserLogged = useLoginState();
   const isFav = parseUserFavs(serializedFavs).includes(movie.id);
 
   if (contentType !== CONTENT_TYPE.MOVIE) return null;

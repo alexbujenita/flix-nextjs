@@ -1,18 +1,12 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import LogInOut from "../LogInOut/LogInOut";
-import isLogged from "../../utils/isLogged";
 import SearchBar from "../SearchBar/SearchBar";
 import styles from "./NavBar.module.scss";
+import useLoginState from "../../utils/useLoginState";
 
 export default function NavBar() {
-  const [logged, setLogged] = useState(false);
-  useEffect(() => {
-    const isLoggedIn = isLogged();
-    if (logged !== isLoggedIn) {
-      setLogged(isLoggedIn);
-    }
-  });
+  const logged = useLoginState();
+
   return (
     <div className={styles.navBarContainer}>
       <Link href="/movies">

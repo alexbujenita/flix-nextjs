@@ -5,12 +5,29 @@ import { buildQuery } from "../../lib/buildQuery";
 import styles from "./FilterMovies.module.scss";
 
 export default function FilterMovies() {
+  const [certifications, setCertifications] = useState({});
+
   useEffect(() => {
-    getCerts();
+    let isCurrent = true;
+
+    axios
+      .get("http://localhost:3001/api/certifications")
+      .then(({ data }) => {
+        if (isCurrent) {
+          setCertifications(data.certifications);
+        }
+      })
+      .catch((error) => {
+        if (isCurrent) {
+          console.log(error);
+        }
+      });
+
+    return () => {
+      isCurrent = false;
+    };
   }, []);
   const router = useRouter();
-
-  const [certifications, setCertifications] = useState({});
 
   const [showFilters, setShowFilters] = useState(false);
   const [adult, setAdult] = useState(false);
@@ -22,17 +39,6 @@ export default function FilterMovies() {
 
   function showHideFilters() {
     setShowFilters(!showFilters);
-  }
-
-  async function getCerts() {
-    try {
-      const { data } = await axios.get(
-        "http://localhost:3001/api/certifications",
-      );
-      setCertifications(data.certifications);
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   function handleSubmit(event) {
