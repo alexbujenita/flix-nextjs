@@ -32,3 +32,10 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# generated TypeScript files
+next-env.d.ts
+*.tsbuildinfo
+
+# oh-my-opencode
+.omo
