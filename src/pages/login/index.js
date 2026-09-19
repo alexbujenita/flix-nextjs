@@ -24,18 +24,18 @@ export default function Login() {
       } = await axios.post(
         "http://localhost:3001/api/auth/login",
         { email, password },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       localStorage.setItem("LOGGED", firstName);
       const { data } = await axios.get(
         "http://localhost:3001/api/favs/user-favs?all=true",
         {
           withCredentials: true,
-        }
+        },
       );
       if (data.rows?.[0]?.UserFavourites.length) {
         const movieIds = data.rows[0].UserFavourites.map(
-          (fav) => fav.movieRefId
+          (fav) => fav.movieRefId,
         );
         localStorage.setItem("UserFavs", JSON.stringify(movieIds));
       } else {

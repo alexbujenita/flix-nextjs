@@ -3,7 +3,6 @@ import { FaStar } from "react-icons/fa";
 import styles from "./Rating.module.scss";
 
 export default function Rating({ isFav, movieRating, movie, setMovieRating }) {
-
   if (!isFav) return null;
   const STARS = [];
   const rate = async (rating) => {
@@ -12,7 +11,7 @@ export default function Rating({ isFav, movieRating, movie, setMovieRating }) {
       await axios.patch(
         `http://localhost:3001/api/favs/${movie.id}`,
         { rating },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       setMovieRating(rating);
     } catch (error) {
@@ -29,7 +28,7 @@ export default function Rating({ isFav, movieRating, movie, setMovieRating }) {
         onClick={() => {
           rate(i + 1);
         }}
-      />
+      />,
     );
   }
   return <div className={styles.ratingContainer}>{STARS}</div>;

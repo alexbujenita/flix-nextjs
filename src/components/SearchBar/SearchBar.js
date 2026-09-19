@@ -15,7 +15,7 @@ export default function SearchBar() {
     if (event.key === "Enter" && search.trim()) {
       setDisplay(false);
       router.push(
-        `/search?searchTerm=${encodeURIComponent(search.trim())}&includeAdult=${adult}&entity=${entity}&page=1`
+        `/search?searchTerm=${encodeURIComponent(search.trim())}&includeAdult=${adult}&entity=${entity}&page=1`,
       );
     }
   };
@@ -44,10 +44,14 @@ export default function SearchBar() {
 
   const getEntityIcon = () => {
     switch (entity) {
-      case ENTITIES.MOVIE: return "🎬";
-      case ENTITIES.TV: return "📺";
-      case ENTITIES.PERSON: return "👤";
-      default: return "🎬";
+      case ENTITIES.MOVIE:
+        return "🎬";
+      case ENTITIES.TV:
+        return "📺";
+      case ENTITIES.PERSON:
+        return "👤";
+      default:
+        return "🎬";
     }
   };
 
@@ -76,7 +80,7 @@ export default function SearchBar() {
               type="button"
               className={styles.entityToggle}
               onClick={swapEntity}
-              title={`Switch to ${entity === ENTITIES.MOVIE ? 'TV shows' : entity === ENTITIES.TV ? 'people' : 'movies'}`}
+              title={`Switch to ${entity === ENTITIES.MOVIE ? "TV shows" : entity === ENTITIES.TV ? "people" : "movies"}`}
               aria-label={`Currently searching ${entity}. Click to switch entity type.`}
             >
               {getEntityIcon()}

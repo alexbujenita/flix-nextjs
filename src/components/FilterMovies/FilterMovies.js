@@ -27,7 +27,7 @@ export default function FilterMovies() {
   async function getCerts() {
     try {
       const { data } = await axios.get(
-        "http://localhost:3001/api/certifications"
+        "http://localhost:3001/api/certifications",
       );
       setCertifications(data.certifications);
     } catch (error) {
@@ -65,8 +65,9 @@ export default function FilterMovies() {
     return years;
   }
 
-  const YYYY_MM_DD = `${new Date().getFullYear()}-${new Date().getMonth() + 1
-    }-${new Date().getDate()}`;
+  const YYYY_MM_DD = `${new Date().getFullYear()}-${
+    new Date().getMonth() + 1
+  }-${new Date().getDate()}`;
 
   return (
     <div className={styles.filterContainer}>

@@ -88,7 +88,7 @@ export async function getServerSideProps(ctx) {
   } = ctx;
   try {
     const { data } = await axios.get(
-      `http://localhost:3001/api/tv/${parseInt(seriesId)}`
+      `http://localhost:3001/api/tv/${parseInt(seriesId)}`,
     );
     return {
       props: {

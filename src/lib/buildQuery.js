@@ -20,7 +20,7 @@ export function buildQuery(
     certification,
     certificationCountry,
   },
-  isTv = false
+  isTv = false,
 ) {
   let query = `/${isTv ? "tv" : "movies"}?page=${
     page < 1 || page > 500 ? 1 : page

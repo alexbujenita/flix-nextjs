@@ -21,7 +21,7 @@ export default function Home() {
         <h2>
           Or{" "}
           <Link className={styles.homepageLink} href="/register">
-          create
+            create
           </Link>{" "}
           a free account to save a personal list of favourites.
         </h2>

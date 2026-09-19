@@ -19,6 +19,7 @@ and then run it in development mode:
 ```
 yarn dev
 ```
+
 or better yet build it and run the faster prod build:
 
 ```
@@ -29,12 +30,14 @@ npx next start
 Navigate to localhost:3000/movies and enjoy.
 
 ## Tech info
+
 - Lazy loaded and cached images
 - Cookies for auth
 - Server side rendered with static pages like the auth ones
 - React Hooks for state and component "lifecycle"
 
 ## Features
+
 - Film browser and search functionality
 - Can search for actors
 - Account creation
@@ -47,6 +50,7 @@ Navigate to localhost:3000/movies and enjoy.
 - Random films based on year and rating
 
 ## Screenshots
+
 ![search](./screenshots/search.jpg)
 ![film](./screenshots/film.jpg)
 ![actor](./screenshots/actor.jpg)

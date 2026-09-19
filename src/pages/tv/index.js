@@ -10,7 +10,6 @@ export default function Tv({
   data: { page, results },
   filterOptions: { year, adult },
 }) {
-
   const nextPageNumber = page >= 500 ? 500 : page + 1;
   const prevPageNumber = page <= 1 ? 1 : page - 1;
   const nextPage = buildQuery(
@@ -18,14 +17,14 @@ export default function Tv({
       page: nextPageNumber,
       adult,
     },
-    true
+    true,
   );
   const prevPage = buildQuery(
     {
       page: prevPageNumber,
       adult,
     },
-    true
+    true,
   );
   return (
     <>
@@ -35,7 +34,13 @@ export default function Tv({
       </Head>
       <div className={styles.cardContainer}>
         {results.map((tvSeries) => {
-          return <Card key={tvSeries.id} {...tvSeries} contentType={CONTENT_TYPE.TV_SERIES} />;
+          return (
+            <Card
+              key={tvSeries.id}
+              {...tvSeries}
+              contentType={CONTENT_TYPE.TV_SERIES}
+            />
+          );
         })}
       </div>
       <BottomNav prev={prevPage} next={nextPage} />

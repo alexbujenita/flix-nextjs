@@ -9,7 +9,7 @@ export default function MarkSeenUnseen(props) {
       await axios.patch(
         `http://localhost:3001/api/favs/${movie.id}`,
         { seen: "change!" },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       if (unseen) {
         setSeen(false);

@@ -48,7 +48,9 @@ export default function Movies({
       <FilterMovies />
       <div className={styles.cardContainer}>
         {results.map((movie) => {
-          return <Card key={movie.id} {...movie} contentType={CONTENT_TYPE.MOVIE} />;
+          return (
+            <Card key={movie.id} {...movie} contentType={CONTENT_TYPE.MOVIE} />
+          );
         })}
       </div>
       <BottomNav prev={prevPage} next={nextPage} />

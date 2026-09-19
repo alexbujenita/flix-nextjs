@@ -30,7 +30,7 @@ export default function Movie(props) {
     const getPossibleFav = async () => {
       const { data } = await axios.get(
         `http://localhost:3001/api/favs/user-favs/${parseInt(movie.id)}`,
-        { withCredentials: true }
+        { withCredentials: true },
       );
       if (data) {
         setIsFav(true);
@@ -103,10 +103,10 @@ export default function Movie(props) {
         movie={movie}
       />
       <Link href={`/movie/similar-movies/${movie.id}`}>
-          <h2 className={styles.showHideCast}>SIMILAR MOVIES</h2>
+        <h2 className={styles.showHideCast}>SIMILAR MOVIES</h2>
       </Link>
       <Link href={`/movie/recommendations/${movie.id}`}>
-          <h2 className={styles.showHideCast}>RECOMMENDED MOVIES</h2>
+        <h2 className={styles.showHideCast}>RECOMMENDED MOVIES</h2>
       </Link>
       {trailers?.results?.length ? (
         <Trailers trailers={trailers.results} />
@@ -144,7 +144,7 @@ export async function getServerSideProps(ctx) {
   } = ctx;
   try {
     const { data } = await axios.get(
-      `http://localhost:3001/api/movie/${parseInt(movieId)}/include-all`
+      `http://localhost:3001/api/movie/${parseInt(movieId)}/include-all`,
     );
     return {
       props: {

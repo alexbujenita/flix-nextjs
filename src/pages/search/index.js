@@ -60,7 +60,7 @@ export async function getServerSideProps(ctx) {
   const normalizedSearch = searchTerm.trim().toLowerCase();
   try {
     const { data } = await axios.get(
-      `http://localhost:3001/api/search/${entity}?searchTerm=${normalizedSearch}&pageNum=${page}&includeAdult=${includeAdult}`
+      `http://localhost:3001/api/search/${entity}?searchTerm=${normalizedSearch}&pageNum=${page}&includeAdult=${includeAdult}`,
     );
     return {
       props: {

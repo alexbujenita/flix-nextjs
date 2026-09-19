@@ -11,7 +11,7 @@ export default function RandomMovies({ data }) {
   async function refreshMovies() {
     setBtnDisable(true);
     const { data: newMovies } = await axios.get(
-      "http://localhost:3001/api/random"
+      "http://localhost:3001/api/random",
     );
     setMovies(newMovies);
     setBtnDisable(false);

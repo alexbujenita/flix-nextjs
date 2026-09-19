@@ -15,7 +15,7 @@ import { CONTENT_TYPE } from "../../utils/constants";
 export default function AddRemoveIcon({ movie, contentType }) {
   const [isFav, setIsFav] = useState(false);
   const [isUserLogged, setIsUserLogged] = useState(false);
-  
+
   useEffect(() => {
     const favs = localStorage.getItem("UserFavs");
     setIsUserLogged(isLogged());

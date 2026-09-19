@@ -37,11 +37,9 @@ export async function getServerSideProps(ctx) {
     params: { movieIdSimilar },
   } = ctx;
   try {
-    const {
-      data,
-    } = await axios.get(
+    const { data } = await axios.get(
       `http://localhost:3001/api/movie/${movieIdSimilar}/similar?pageNum=${page}`,
-      { withCredentials: true }
+      { withCredentials: true },
     );
     return {
       props: { data, currentMovieId: movieIdSimilar },

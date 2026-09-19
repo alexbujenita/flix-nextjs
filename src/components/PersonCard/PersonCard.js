@@ -22,16 +22,16 @@ function PersonCard({
     >
       <div className={styles.personImageContainer}>
         <Link href={`/actor/${id}`} passHref>
-            <Image
-              src={
-                profile_path
-                  ? `https://image.tmdb.org/t/p/w342${profile_path}`
-                  : "/image-placeholder-vertical.jpg"
-              }
-              alt={original_name}
-              width={width}
-              height={height}
-            />
+          <Image
+            src={
+              profile_path
+                ? `https://image.tmdb.org/t/p/w342${profile_path}`
+                : "/image-placeholder-vertical.jpg"
+            }
+            alt={original_name}
+            width={width}
+            height={height}
+          />
         </Link>
       </div>
       <div className={styles.personNames}>

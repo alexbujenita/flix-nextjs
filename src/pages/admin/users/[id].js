@@ -13,7 +13,7 @@ export default function AdminUserInfo({ count, rows: [UserFavourites] }) {
           `http://localhost:3001/admin/users/${UserFavourites.id}/movie/${movieId}`,
           {
             withCredentials: true,
-          }
+          },
         );
         window.location.reload(true);
       } catch (e) {
@@ -56,12 +56,18 @@ export default function AdminUserInfo({ count, rows: [UserFavourites] }) {
               >
                 <td>{id}</td>
                 <td>
-                  <Link href={`/movie/${movieRefId}`} passHref className={styles.userMovieLink}>
+                  <Link
+                    href={`/movie/${movieRefId}`}
+                    passHref
+                    className={styles.userMovieLink}
+                  >
                     {movieRefId}
                   </Link>
                 </td>
                 <td>{movieTitle}</td>
-                <td onClick={deleteFav(id)} className={styles.delete}>DELETE</td>
+                <td onClick={deleteFav(id)} className={styles.delete}>
+                  DELETE
+                </td>
               </tr>
             );
           })}
@@ -83,7 +89,7 @@ export async function getServerSideProps(ctx) {
           Cookie: ctx.req.headers.cookie || "",
         },
         withCredentials: true,
-      }
+      },
     );
     return {
       props: data,

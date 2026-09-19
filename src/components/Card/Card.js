@@ -48,18 +48,22 @@ export default function Card(props) {
 }
 
 function getTitle(movieOrTvSeries) {
-  return movieOrTvSeries.title || movieOrTvSeries.original_name || movieOrTvSeries.name;
+  return (
+    movieOrTvSeries.title ||
+    movieOrTvSeries.original_name ||
+    movieOrTvSeries.name
+  );
 }
 
 function getCardLink(props) {
-  const { id, contentType } = props
+  const { id, contentType } = props;
   switch (contentType) {
     case CONTENT_TYPE.MOVIE:
       return `/movie/${id}`;
     case CONTENT_TYPE.TV_SERIES:
       return `/tv/series/${id}`;
     case CONTENT_TYPE.TV_SERIES_SEASON:
-      const {season_number, seriesId} = props;
+      const { season_number, seriesId } = props;
       return `/tv/series/${seriesId}/season/${season_number}`;
     default:
       return `/movie/${id}`;

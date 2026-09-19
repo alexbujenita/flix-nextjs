@@ -14,7 +14,7 @@ export async function addMovieToFavs(movieId, movieTitle, moviePosterPath) {
         movieTitle: movieTitle,
         moviePosterPath: moviePosterPath || "",
       },
-      { withCredentials: true }
+      { withCredentials: true },
     );
     const favs = JSON.parse(localStorage.getItem("UserFavs"));
     favs.push(movieId);
@@ -35,7 +35,7 @@ export async function removeMovieFromFavs(movieId) {
       withCredentials: true,
     });
     const favs = JSON.parse(localStorage.getItem("UserFavs")).filter(
-      (id) => id !== movieId
+      (id) => id !== movieId,
     );
     localStorage.setItem("UserFavs", JSON.stringify(favs));
   } catch (error) {

@@ -12,7 +12,7 @@ export default function AddRemoveFav(props) {
       await addMovieToFavs(movie.id, movie.title, movie.poster_path);
       setIsFav(true);
     } else {
-      localStorage.setItem("previousMovie", `/movie/${movie.id}`)
+      localStorage.setItem("previousMovie", `/movie/${movie.id}`);
       router.push("/login");
     }
   }

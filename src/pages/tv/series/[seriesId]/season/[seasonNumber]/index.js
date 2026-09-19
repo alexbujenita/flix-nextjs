@@ -1,3 +1,3 @@
 export default function TVSeason() {
-    return <h1>TV Season!</h1>;
+  return <h1>TV Season!</h1>;
 }

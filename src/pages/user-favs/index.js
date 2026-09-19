@@ -41,7 +41,7 @@ export default function UserFavs(props) {
       {
         withCredentials: true,
         responseType: "blob",
-      }
+      },
     );
     const url = URL.createObjectURL(new Blob([data]));
     const link = document.createElement("a");
@@ -153,7 +153,7 @@ export async function getServerSideProps(ctx) {
           Cookie: ctx.req.headers.cookie || "",
         },
         withCredentials: true,
-      }
+      },
     );
     return {
       props: data,
