@@ -1,4 +1,5 @@
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "./response";
 
 import { makeFavorite } from "../fixtures/favs";
 import { makeMovie } from "../fixtures/movie";
@@ -45,6 +46,19 @@ const userFavorites = {
 };
 
 export const handlers = [
+  http.options(
+    `${origin}/*`,
+    ({ request }) =>
+      new HttpResponse(null, {
+        status: 204,
+        headers: {
+          "Access-Control-Allow-Methods":
+            "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers":
+            request.headers.get("Access-Control-Request-Headers") ?? "",
+        },
+      }),
+  ),
   http.get(`${origin}/api/movies`, () => HttpResponse.json(moviePage)),
   http.get(`${origin}/api/tv`, () => HttpResponse.json(tvPage)),
   http.get(`${origin}/api/search/:entity`, ({ params }) =>

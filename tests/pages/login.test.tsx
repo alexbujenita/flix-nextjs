@@ -1,6 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent, { type UserEvent } from "@testing-library/user-event";
-import { HttpResponse, http, type PathParams } from "msw";
+import type { PathParams } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../msw/response";
 import mockRouter, { type Url } from "next-router-mock";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 

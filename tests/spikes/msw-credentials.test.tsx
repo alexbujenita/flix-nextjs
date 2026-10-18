@@ -1,5 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../msw/response";
 import { describe, expect, it, vi } from "vitest";
 
 import Movie from "../../src/pages/movie/[movieId]";
@@ -48,7 +49,7 @@ describe("credentialed cross-origin requests through MSW", () => {
       expect(credentials[0]).toBe("include");
     });
     expect(
-      screen.getByRole("heading", { name: "MARK AS UNSEEN" }),
+      await screen.findByRole("heading", { name: "MARK AS UNSEEN" }),
     ).toBeVisible();
     await waitFor(() => {
       expect(container.querySelectorAll('svg[color="red"]')).toHaveLength(7);

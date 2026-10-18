@@ -1,7 +1,8 @@
 // @vitest-environment node
 
 import axios from "axios";
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../msw/response";
 import { describe, expect, it, vi } from "vitest";
 
 import { getServerSideProps as getAdminUsersProps } from "../../src/pages/admin/users";

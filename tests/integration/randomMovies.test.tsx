@@ -1,6 +1,7 @@
 // @vitest-environment node
 
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../msw/response";
 import { describe, expect, it } from "vitest";
 
 import { getStaticProps } from "../../src/pages/random-movies";

@@ -1,6 +1,7 @@
 import { fireEvent, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../msw/response";
 import type { NextRouter } from "next/router";
 import { useRouter } from "next/router";
 import { useEffect } from "react";

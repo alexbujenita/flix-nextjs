@@ -1,6 +1,7 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../msw/response";
 import { useRouter } from "next/router";
 import { describe, expect, it, vi } from "vitest";
 

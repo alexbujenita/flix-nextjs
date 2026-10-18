@@ -18,7 +18,7 @@ if (isDom) {
   URL.revokeObjectURL = vi.fn();
 }
 
-beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
+beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
 
 afterEach(() => {
   if (isDom) {

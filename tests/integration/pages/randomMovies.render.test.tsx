@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../../msw/response";
 import { expect, it } from "vitest";
 
 import RandomMovies, { getStaticProps } from "../../../src/pages/random-movies";

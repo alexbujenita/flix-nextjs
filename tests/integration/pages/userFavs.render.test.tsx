@@ -1,7 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../../msw/response";
 import mockRouter from "next-router-mock";
 import { describe, expect, it, onTestFinished, vi } from "vitest";
 

@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../../msw/response";
 import { describe, expect, it } from "vitest";
 
 import Search, { getServerSideProps } from "../../../src/pages/search";

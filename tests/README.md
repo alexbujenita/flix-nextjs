@@ -2,6 +2,20 @@
 
 These rules are binding for component tests in this suite.
 
+## MSW 3 and request origins
+
+Import HTTP handlers from `msw/http` and JSON/raw responses from the shared
+`tests/msw/response.ts` factory. Its `HttpResponse.json()` and constructor add
+credentialed CORS headers to both shared fixtures and per-test `server.use`
+overrides. Explicit response headers take precedence, allowing CORS rejection
+tests.
+
+MSW 3's Node XHR interceptor mocks the underlying HTTP request, so jsdom still
+enforces CORS. Tests keep the app's document origin (`http://localhost:3000`) and
+call the mocked API at `http://localhost:3001`. The shared OPTIONS handler answers
+preflights for that API. `onUnhandledFrame: "error"` rejects unexpected requests;
+CORS checks remain enabled.
+
 ## Query elements by semantics, never by CSS class
 
 Vitest uses its default `css: false` behavior, so CSS-module imports are stubs and

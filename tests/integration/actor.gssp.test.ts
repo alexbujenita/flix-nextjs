@@ -1,6 +1,7 @@
 // @vitest-environment node
 
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../msw/response";
 import { describe, expect, it, vi } from "vitest";
 
 import { getServerSideProps } from "../../src/pages/actor/[actorId]";

@@ -1,6 +1,7 @@
 import { screen, waitFor } from "@testing-library/react";
 import axios from "axios";
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../msw/response";
 import { describe, expect, it, vi } from "vitest";
 
 import Movie from "../../src/pages/movie/[movieId]";

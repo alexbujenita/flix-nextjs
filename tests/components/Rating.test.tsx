@@ -1,6 +1,7 @@
 import { waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { HttpResponse, http } from "msw";
+import { http } from "msw/http";
+import { HttpResponse } from "../msw/response";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import Rating from "../../src/components/Rating/Rating";
