@@ -36,6 +36,7 @@
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@typescript/native": "npm:typescript@^7.0.2",
     "@vitejs/plugin-react": "^6",
     "@vitest/coverage-v8": "^5",
     "eslint": "^10.13.0",
@@ -44,7 +45,7 @@
     "msw": "^3.0",
     "next-router-mock": "^1",
     "prettier": "^3.9.10",
-    "typescript": "^5.9.3",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
     "vite": "^8",
     "vitest": "^5"
   }

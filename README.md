@@ -55,6 +55,23 @@ yarn typecheck   # type-check the suite against tsconfig.vitest.json
 Run `yarn build` once after cloning. It generates `.next/types/`, which `yarn typecheck` needs.
 The project supports Node `^24.15.0 || >=26.0.0`.
 
+### TypeScript toolchain
+
+`yarn typecheck` runs the native TypeScript 7 compiler. Two package aliases keep
+that compiler alongside the JavaScript API required by ESLint and Next.js:
+
+- `@typescript/native` aliases `typescript@^7.0.2` and provides `tsc`.
+- `typescript` aliases `@typescript/typescript6@^6.0.2` and provides the TypeScript 6
+  compiler API and `tsc6`.
+
+Keep both aliases: the installed `typescript-eslint` supports TypeScript versions
+below 6.1 and needs the JavaScript compiler API that TypeScript 7.0 does not ship.
+Next.js also uses that API for its build-time typecheck. `yarn build` therefore
+checks with TypeScript 6, while `yarn typecheck` checks the app and tests with 7.
+
+Verify the split with `yarn tsc --version`, `yarn tsc6 --version`, and
+`node -p 'require("typescript").version'`.
+
 ### Coverage baseline
 
 | Metric     | Baseline |
